@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+.bg{
+  background-image: url(../bgimagecp.jpg);
+  height: 100vh;
+}
+
+
+/* .navbar-brand{
+  
+  color:rgb(128, 28, 28);
+  font-size: 100px; 
+  /* margin: 0px; */
+
+
+

@@ -1,28 +1,35 @@
 const mongoose = require("mongoose");
+const MealModule = require("./Meal");
 
-let Mealplan = new mongoose.Schema({
+let MealplanSchema = new mongoose.Schema({
+    name: {
+        type: String
+    },
     sunday: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Weekday'
+        type: [MealModule.MealSchema]
     },
     monday: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Weekday'
+        type: [MealModule.MealSchema]
     },
     tuesday: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Weekday'
+        type: [MealModule.MealSchema]
     },
     wednesday: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Weekday'
+        type: [MealModule.MealSchema]
     },
     thursday: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Weekday'
+        type: [MealModule.MealSchema]
     },
     friday: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Weekday'
+        type: [MealModule.MealSchema]
     },
     saturday: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Weekday'
+        type: [MealModule.MealSchema]
+    },
+    date_created: {
+        type: String
     }
-   
 });
 
-module.exports = mongoose.model('Mealplans', Mealplan);
+exports.Mealplan = mongoose.model('Mealplan', MealplanSchema);
+exports.MealplanSchema = MealplanSchema;

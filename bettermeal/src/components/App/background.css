@@ -1,0 +1,114 @@
+.bg{
+    background-image: url(../bgimagecp.jpg);
+    height: 100vh;
+}
+
+/* .bg::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px; 
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(148, 212, 241, 0.3);
+}    */
+
+@font-face {
+    font-family: 'Lato';
+    src: url(../Lato-Light.ttf);
+  }
+
+.navbar-brand{
+    margin-left: 5%
+}
+.navbar-brand-text {
+    position: absolute;
+    font-family: 'Lato';
+    font-size: xx-large;
+    /* width: 100%;
+    left: 0;
+    top: 0;
+    
+   
+    /* margin-top: 5%; */
+    text-align: middle;
+    margin-left: 1%;
+    color: rgb(255, 255, 255)
+  } 
+.navbar-right{
+    position: absolute;
+    font-family: 'Lato';
+    font-size: large;
+    color: rgb(255, 255, 255);
+    text-align: right;
+    margin-left: 33%;
+ }
+ /* .navbar-collapse{
+    font-family: 'Lato';
+    color: rgb(255, 255, 255);
+    text-align: right;
+    margin-left: 10%;
+ } */
+ /* .navbar-item{
+     color: white
+ } */
+
+ #todaysplancontainer{
+     background-color: rgba(255, 255, 255, 0);
+ }
+
+ .nav-link{
+    font-family: 'Lato';
+    color: white
+ }
+
+ .navbar-text{
+    font-family: 'Lato';
+    color: white;
+    margin-right: 5%;
+ }
+
+ .btn-secondary{
+    position: relative;
+    color: rgb(255, 255, 255);
+    left: 13vw;
+    top: 0vh;
+    /* padding-left: 10%;
+    padding-right: 10%; */
+    width: 20vw;
+    white-space: nowrap;
+    border: 1px black;
+    background-color: rgba(1, 1, 1, 0.7);
+ }
+
+ .card{
+     position: absolute;
+     width: 20vw;
+     
+ }
+
+ #breakfast{
+    left: 15vw;
+    top: 35vh;
+ }
+
+ #lunch{
+    left: 39vw;
+    top: 35vh;
+ }
+
+ #dinner{
+    left: 63vw;
+    top: 35vh;
+ }
+
+#editmeals{
+     left: 39vw;
+     top: 40vw;
+}
+
+.btn{
+    font-family: 'Lato';
+    color: white;
+    font-weight: 500;
+}

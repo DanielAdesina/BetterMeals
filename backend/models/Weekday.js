@@ -12,7 +12,7 @@ let Weekday = new mongoose.Schema({
     },
     dinner: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Meal'
-    },
+    }
 });
 
 module.exports = mongoose.model('Weekdays', Weekday);

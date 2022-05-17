@@ -165,11 +165,13 @@ class App extends Component{
         
         <Router>
           <Navbar updateFunc={this.pageChanged}></Navbar>
-          <button type="button" class="btn btn-primary" onClick={this.pageChanged}>Primary</button>
+          <div class="container" id="todaysplancontainer">
+            <Route path="/" exact component={TodaysMeal}></Route>
+            <Route path="/meals" component={Meals}></Route>
+            <Route path="/mealplans" component={Mealplans}></Route>
+          </div>
           
-          <Route path="/" exact component={TodaysMeal}></Route>
-          <Route path="/meals" component={Meals}></Route>
-          <Route path="/mealplans" component={Mealplans}></Route>
+          
           
           
           
