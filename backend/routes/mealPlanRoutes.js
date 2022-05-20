@@ -48,14 +48,20 @@ router.get('/', function(req, res) {
 // });
 
 router.post('/new', function(req, res){
-    let mealplan = new MealplanModule.Mealplan(req.body);
-    mealplan.save()
-        .then(mealplan => {
-            res.status(200).json({'mealplan': 'mealplan added successfully ' + mealplan.name});
-        })
-        .catch(err => {
-            res.status(400).send('adding new mealplan failed');
-        });
+    const mealTaken = await MealplanModule.Mealplan.findOne({name: req.body.name});
+    if(nameTaken){
+        res.json({message: "Mealplan name already taken"})
+    }
+    else{
+        let mealplan = new MealplanModule.Mealplan(req.body);
+        mealplan.save()
+            .then(mealplan => {
+                res.status(200).json({'mealplan': 'mealplan added successfully ' + mealplan.name});
+            })
+            .catch(err => {
+                res.status(400).send('adding new mealplan failed');
+            });
+    }
 
 });
 
