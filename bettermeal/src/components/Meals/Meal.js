@@ -42,7 +42,6 @@ class Meal extends Component{
                 <img src={this.state.imageUrl} class="card-img-top" alt="..." />
                 <div class="card-body">
                     <h6 class="card-title">{this.state.meal.title}</h6>
-
                 </div>
             </div>
         )
