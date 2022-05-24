@@ -1,0 +1,77 @@
+#meals-container{
+    position: relative;
+    width: 40vw;
+    top: 5vh;
+}
+/* 
+.inner-addon {
+    position: relative;
+} */
+
+/*.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none; 
+} */
+
+/* .right-addon .glyphicon { 
+    right: 0px;
+} */
+
+#mealsearch-form{
+    display: flex;
+    flex-direction: row;
+    border-radius: 1.625rem;
+  
+  /* This bit draws the box around it */
+    border:0.1vmax solid grey;
+    background-color: white;
+
+  /* I've used padding so you can see the edges of the elements. */
+    padding:0.3vmin;
+    height: 5vh;
+}
+
+.search-icon{
+    position: absolute;
+    flex-grow: 2;
+    right: 0px;
+    background: url(./icons8-search-50.png);
+    background-size: cover;
+    width: 1.6vmax;
+    height: 1.6vmax;
+    margin-top: 0.5vmin;
+    margin-right: 1.3vmax;
+    border: none;
+}
+
+#mealsearch{
+    position: absolute;
+    /* border: 10px; */
+    border-width: 0px;
+    /* border-color: rgb(255, 0, 0); */
+    border-radius: 1.625rem;
+    outline: none;
+    width: 36.4vw;
+    left: 0.5vw;
+    height: 4vh;
+}
+
+#mealsearch:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+input:active{
+    outline: none;
+}
+
+/* input:focus{
+    outline: none !important;
+}
+.form-outline:focus{
+    outline: none !important;
+} */

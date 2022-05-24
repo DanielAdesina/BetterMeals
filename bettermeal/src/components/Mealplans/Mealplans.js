@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Mealplan.css"
-import { Link, Router } from 'react-router-dom';
+import "./Mealplans.css"
+import { Link, Redirect, Router, useHistory } from 'react-router-dom';
+import { useAuth } from '../Auth/RequireAuth';
 
 class Mealplans extends Component {
     constructor(props){
         super(props)
         
         this.state = {
-            mealplanNames: []
+            mealplanNames: [],
+            authorized: false
         }
         this.onClickHandler = this.onClickHandle.bind(this)
     }
     onClickHandle = (event) =>{
          alert();
          event.stopPropagation();
+         return <Mealplans></Mealplans>
 
     }
 
@@ -25,24 +28,35 @@ class Mealplans extends Component {
         }
     }
 
+    editRedirect = () => {
+        window.location = "/meals";
+    }
+
    
-
-
     componentDidMount(){
-        axios.get('http://localhost:5000/mealplan')
+        const config = {
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            }
+        }
+        axios.get('http://localhost:5000/mealplan', config)
         .then(res => {
+            if(res.data.isAuth === false){
+                window.location = "/login"; 
+            } 
             const mealplans = Array.from(res.data);
             console.log(mealplans);
             this.setState({
                 mealplanNames: mealplans.map((plan) => 
-                <a href="/" class="list-group-item list-group-item-action d-flex justify-content-between border-end-0 border-start-0" onClick={this.linkHandler}>
+                <Link to={"/mealplan/" + plan._id} class="list-group-item list-group-item-action d-flex justify-content-between border-end-0 border-start-0" onClick={this.linkHandler}>
                     {plan.name}
                     <span>
-                        <span class="btn edit-button"></span>
-                        <span class="btn delete-button"></span>
+                        <span class="btn edit-button" onClick={this.editRedirect}></span>
+                        {/* <span class="btn edit-button" onClick={this.editRedirect}></span> */}
+                        <span href="" class="btn delete-button"></span>
                     </span>
                     
-                </a>)
+                </Link>)
             });
         })
         // console.log(this.state.mealplanNames)
@@ -50,7 +64,7 @@ class Mealplans extends Component {
         
     render() {
         return (
-            <div class="container">
+            <div class="container" id="MealplansContainer">
                 <h2>Meal Plans</h2>
                 {/* <hr /> */}
                 <div class="list-group list-group-flush">

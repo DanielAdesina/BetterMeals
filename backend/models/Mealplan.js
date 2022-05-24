@@ -6,30 +6,30 @@ let MealplanSchema = new mongoose.Schema({
         type: String
     },
     sunday: {
-        type: [MealModule.MealSchema]
+        type: []
     },
     monday: {
-        type: [MealModule.MealSchema]
+        type: []
     },
     tuesday: {
-        type: [MealModule.MealSchema]
+        type: []
     },
     wednesday: {
-        type: [MealModule.MealSchema]
+        type: []
     },
     thursday: {
-        type: [MealModule.MealSchema]
+        type: []
     },
     friday: {
-        type: [MealModule.MealSchema]
+        type: []
     },
     saturday: {
-        type: [MealModule.MealSchema]
+        type: []
     },
     date_created: {
         type: String
-    }
+    },
+
 });
 
-exports.Mealplan = mongoose.model('Mealplan', MealplanSchema);
-exports.MealplanSchema = MealplanSchema;
+exports.Schema = MealplanSchema;

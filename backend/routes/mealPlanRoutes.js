@@ -1,17 +1,33 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("./authRoutes");
+const mongoose = require("mongoose");
 // const Mealplan = require("../models/Mealplan");
 // const Weekday = require("../models/Weekday");
 // const Meal = require("../models/Meal");
-const MealplanModule = require("../models/Mealplan");
+const Mealplan = require("../models/Mealplan");
 
-router.get('/', function(req, res) {
-    MealplanModule.Mealplan.find(function(err, mealplans) {
+router.get('/', auth.verifyJWT, function(req, res) {
+    const MealplanModel = mongoose.model("Mealplan", Mealplan.Schema, req.username + "Mealplan");
+    MealplanModel.find(function(err, mealplans) {
         res.json(mealplans);
     });
 });
 
-// router.get('/:day', function(req, res) {
+router.get('/:id', auth.verifyJWT, function(req, res) {
+    let id = req.params.id;
+    const MealplanModel = mongoose.model("Mealplan", Mealplan.Schema, req.username + "Mealplan");
+    MealplanModel.findById(id, function(err, mealplan){
+        if(err){
+            res.json({message: "Mealplan not found", err: err});
+        }
+        else{
+            res.json(mealplan);
+        }
+    })
+});
+
+// router.get('/:day', function(req, res) { 
 //     let day = req.params.day;
 //     Mealplan.find(function(err, mealplans) {
 //         let mealplan = mealplans[0];
@@ -47,21 +63,25 @@ router.get('/', function(req, res) {
 //     });
 // });
 
-router.post('/new', function(req, res){
-    const mealTaken = await MealplanModule.Mealplan.findOne({name: req.body.name});
-    if(nameTaken){
-        res.json({message: "Mealplan name already taken"})
-    }
-    else{
-        let mealplan = new MealplanModule.Mealplan(req.body);
-        mealplan.save()
-            .then(mealplan => {
-                res.status(200).json({'mealplan': 'mealplan added successfully ' + mealplan.name});
-            })
-            .catch(err => {
-                res.status(400).send('adding new mealplan failed');
-            });
-    }
+router.post('/new', auth.verifyJWT, function(req, res){
+    const MealplanModel = mongoose.model("Mealplan", Mealplan.Schema, req.username + "Mealplan");
+    MealplanModel.findOne({name: req.body.name})
+        .then(mealTaken => {
+            if(mealTaken){
+                res.json({message: "Mealplan name already taken"})
+            }
+            else{
+                let mealplan = new MealplanModel(req.body);
+                mealplan.save()
+                    .then(mealplan => {
+                        res.status(200).json({'mealplan': 'mealplan added successfully ' + mealplan.name});
+                    })
+                    .catch(err => {
+                        res.status(400).send('adding new mealplan failed');
+                    });
+            }
+        });
+    
 
 });
 

@@ -1,14 +1,17 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, useHistory, Redirect, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MealPlan from "../MealPlan/MealPlan";
 import Mealplans from "../Mealplans/Mealplans"
-// import Meals from "../Meals/Meals";
-import Logout from "../Logout/Logout"
+import Meals from "../Meals/Meals";
+import Logout from "../Auth/Logout"
+import Login from "../Auth/Login"
+// import useAuth from "../Auth/RequireAuth"
 import CreateMeal from "../CreateMeal/CreateMeal";
 import logo from "../newlogo.png"
 import './background.css'
 import axios from 'axios'
+import Navbar from "../Navbar/Navbar";
 
 // class App extends Component {
 //   render() {
@@ -52,37 +55,7 @@ import axios from 'axios'
 //   }
 // }
 
-class Navbar extends Component{
-  render(){
-    const {updateFunc} = this.props
 
-    return (
-        <div>
-          <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "rgb(48, 51, 54)" }}>
-                
-                <Link to="/" class="navbar-brand">
-                  <img class="d-inline-block align-middle" alt="Logo" src={logo} width="45" height="45"></img>
-                  <span class="navbar-brand-text">BetterMeals</span>
-                </Link>
-                <div class="collapse navbar-collapse">
-                  <ul class="nav navbar-nav navbar-right">
-                    <li class='nav-item'><Link class="nav-link" to="/" onClick={updateFunc}>Current Plan</Link></li>
-                    <li class='nav-item'><Link class="nav-link" to="/meals" onClick={updateFunc}>Meals</Link></li>
-                    <li class='nav-item'><Link class="nav-link" to="/mealplans">Meal Plans</Link></li>
-                  </ul>
-                </div>
-                <div class="justify-content-end navbar-collapse collapse">
-                  <span class="navbar-text">
-                      Logged in as Guest
-                  </span>
-                </div>
-          </nav>
-        </div>
-        
-      
-    )
-  }
-}
 
 class TodaysMeal extends Component{
   render(){
@@ -134,17 +107,42 @@ class TodaysMeal extends Component{
   }
 }
 
-class Meals extends Component {
-  render() {
-      return (
-          <div>
-              <h1>Meal Plan!</h1>
-              <p>Plan your meals out!</p>
-          </div>
-      )
+function useAuth(){
+  const [auth, setAuth] = React.useState(false);
+  const [user, setUser] = React.useState(null);
+  const config = {
+      headers:{
+      "x-access-token": localStorage.getItem("token")
+      }
   }
+  
+  axios.get('http://localhost:5000/user/isUserAuth', config)
+      .then(res => {
+          setAuth(res.data.isAuth);
+          setUser(res.data.username)
+      })
+  return { auth, user }
 }
 
+function RequireAuth({ children }){
+  const {auth, user} = useAuth();
+  const history = useHistory();
+  const location = useLocation();
+  // alert("??");
+  // console.log("HERE IT GOES, ITS GOING, GOING GREAT");
+  console.log(auth); 
+  return auth === true ? children : <Login />;
+
+  // if(authorized === false){
+  //     alert("sigh");
+  //     history.push("/meals"); 
+  // }
+  // else{
+  //     return children;
+  // }
+ 
+
+}
 
 class App extends Component{
   constructor(props){
@@ -164,17 +162,15 @@ class App extends Component{
       <div class="bg">
         
         <Router>
-          <Navbar updateFunc={this.pageChanged}></Navbar>
-          <div class="container" id="todaysplancontainer">
-            <Route path="/" exact component={TodaysMeal}></Route>
-            <Route path="/meals" component={Meals}></Route>
-            <Route path="/mealplans" component={Mealplans}></Route>
-          </div>
           
           
-          
-          
-          
+
+            <Route exact path="/" render={() => <><Navbar></Navbar><TodaysMeal></TodaysMeal></>} />
+            <Route exact path="/meals" render={() => <><Navbar></Navbar><Meals></Meals></>} />
+            <Route exact path="/mealplans" render={() => <><Navbar></Navbar><div class="container" id="todaysplancontainer"><Mealplans></Mealplans></div></>} />
+            <Route exact path="/mealplan/:id" component={MealPlan} />
+            <Route exact path="/login" component={Login}></Route>
+     
         </Router>
 
       </div>

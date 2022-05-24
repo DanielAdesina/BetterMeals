@@ -1,0 +1,24 @@
+#MealplanContainer{
+    background-color: rgba(255, 255, 255, 0.5);
+
+    font-weight: bold;
+    text-align: center;
+}
+
+.card {
+    position: relative;
+    background: rgb(255, 255, 255);
+    border: 1px solid #000000;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 2rem;
+  }
+
+/* .row.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row.display-flex > [class*='col'] {
+    display: flex;
+    flex-direction: column;
+} */

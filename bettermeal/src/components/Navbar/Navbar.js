@@ -1,29 +1,51 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import MealPlan from './components/MealPlan/MealPlan'
+import logo from "../newlogo.png";
 
-export default class Navbar extends Component {
 
-  render() {
+export default class Navbar extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      user: ""
+    }
+  }
+  componentDidMount(){
+    const config = {
+      headers: {
+          "x-access-token": localStorage.getItem("token")
+      }
+    }
+    axios.get('http://localhost:5000/user/isUserAuth', config)
+      .then(res => {
+        this.setState({user: res.data.username})
+      })
+  }
+  render(){
     return (
-      <Router>
-      <nav class="navbar navbar-expand navbar-light">
-        <div class="container">
-          <Link to="/" class="navbar-brand">
-            <img class="d-inline-block align-top" alt="Logo" src="src/logo.png" width="30" height="30"></img>
-            BetterMeal
-          </Link>
-          <div class="justify-content-end navbar-collapse collapse">
-            <span class="navbar-text">
-              <Link to=""></Link>
-            </span>
-          </div>
+        <div>
+          <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "rgb(48, 51, 54)" }}>
+                <Link to="/" class="navbar-brand">
+                  <img class="d-inline-block align-middle" alt="Logo" src={logo} width="45" height="45"></img>
+                  <span class="navbar-brand-text">BetterMeals</span>
+                </Link>
+                <div class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class='nav-item'><Link class="nav-link" to="/">Current Plan</Link></li>
+                    <li class='nav-item'><Link class="nav-link" to="/meals">Meals</Link></li>
+                    <li class='nav-item'><Link class="nav-link" to="/mealplans">Meal Plans</Link></li>
+                  </ul>
+                </div>
+                <div class="justify-content-end navbar-collapse collapse">
+                  <span class="navbar-text">
+                      {"Logged in as " + this.state.user}
+                  </span>
+                </div>
+          </nav>
         </div>
-      </nav>
-      <Route path="/" exact component={TodosList} />
-      <Route path="/edit/:id" component={EditTodo} />
-      <Route path="/create" component={CreateTodo} />
-      </Router>
-    );
+        
+      
+    )
   }
 }

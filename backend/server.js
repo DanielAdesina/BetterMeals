@@ -1,17 +1,17 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const bcrpyt = require('bcrypt');
+const jwt = require('jsonwebtoken')
 const { MongoClient } = require("mongodb");
 const mealRouter = require('./routes/mealRoutes');
 const weekdayRouter = require('./routes/weekdayRoutes');
-const mealPlanRouter = require('./routes/mealPlanRoutes')
+const mealPlanRouter = require('./routes/mealPlanRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 
 
 const mongoose = require("mongoose");
-
-let mealPlanExists = false;
-
 
 app.use(cors());
 
@@ -34,41 +34,7 @@ dbconn.on('error', console.error.bind(console, 'connection error:'));
 
 dbconn.once('open', function callback () {
 
-    // dbconn.collection('mealplans').countDocuments(function(err, count) {
-    //     if( count > 0) {
-    //         mealPlanExists = true;
-    //     }
-    //     else{
-    //         let sun = new Weekday({name: "sunday"});
-    //         sun.save();
-    //         let mon = new Weekday({name: "monday"});
-    //         mon.save();
-    //         let tue = new Weekday({name: "tuesday"});
-    //         tue.save();
-    //         let wed = new Weekday({name: "wednesday"});
-    //         wed.save();
-    //         let thu = new Weekday({name: "thursday"});
-    //         thu.save();
-    //         let fri = new Weekday({name: "friday"});
-    //         fri.save();
-    //         let sat = new Weekday({name: "saturday"});
-    //         sat.save();
-    //         console.log(mon);
-    //         let onlyMealPlan = new Mealplan({
-    //             sunday: sun,
-    //             monday: mon,
-    //             tuesday: tue,
-    //             wednesday: wed,
-    //             thursday: thu,
-    //             friday: fri,
-    //             saturday: sat
-    //         });
-            
-    //         onlyMealPlan.save();        
-    //     }
-    // });
-
-
+    app.use("/user", authRoutes.router)
     app.use("/meals", mealRouter);
     app.use("/weekdays", weekdayRouter);
     app.use("/mealplan", mealPlanRouter);
