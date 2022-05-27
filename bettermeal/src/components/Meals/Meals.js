@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Meals.css"
+import ReactDOMServer from 'react-dom/server'
 import axios from 'axios';
 import Meal from './Meal';
+import reactElementToJSXString from 'react-element-to-jsx-string';
+
+
 
 
 class Meals extends Component {
@@ -10,12 +14,23 @@ class Meals extends Component {
         super(props);
         this.state = {
             searchField: "",
-            mealsResult: <></>
+            mealsResult: <></>,
+            sanityCheck: "insane",
+            clicked: false
         }
+    }
+
+    annoyed = (event) => {
+        event.preventDefault()
+        this.setState({
+            sanityCheck: "sane"
+        })
+        console.log(this.state.sanityCheck);
     }
 
     handleClick(event){
         event.preventDefault();
+        let mealArray = [];
         const options = {
             method: 'GET',
             url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
@@ -29,7 +44,6 @@ class Meals extends Component {
         // console.log(Date.now())
         // console.log(storageCheck.ttl)
         if(storageCheck && (Date.now() < storageCheck.ttl)){
-            alert("woohoo")
             const mealArray = Array.from(storageCheck.results);
             this.setState({
                 mealsResult: <div class="row row-cols-5">
@@ -39,10 +53,8 @@ class Meals extends Component {
             })
         }
         else{
-            
-            
-
             axios.request(options).then(response => {
+                alert("broken, also spending...")
                 response.data.ttl = Date.now() + (86400 * 1000);
                 localStorage.setItem(this.state.searchField, JSON.stringify(response.data));
                 const mealArray = Array.from(response.data.results);
@@ -56,17 +68,17 @@ class Meals extends Component {
                 console.error(error);
             });
         }
-          
     }
 
     render() {
+
         return (
             <div class="container" id="meals-container">
                 <form id="mealsearch-form">
                 
                     <div class="form-outline mb-4 input-group inner-addon right-addon">
                         
-                        <input type="text"  id="mealsearch" placeholder='Search for any meal!' onChange={event => this.setState({searchField: event.target.value})}/>
+                        <input type="text"  id="mealsearch" placeholder='Search for any meal!' value={this.state.searchField} onChange={event => {this.setState({searchField: event.target.value})}}/>
                         
                         
                         {/* <span class="input-group-btn">
@@ -78,7 +90,10 @@ class Meals extends Component {
                         <button class="search-icon" type="submit" onClick={event => this.handleClick(event)}></button>
                     </span>
                 </form>
+                {/* <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealsModal"></button> */}
+                
                 {this.state.mealsResult}
+                
                 
                                     
             </div>
