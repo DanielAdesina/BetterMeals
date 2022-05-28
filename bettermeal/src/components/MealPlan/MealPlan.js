@@ -33,25 +33,25 @@ class MealPlan extends Component {
                 // console.log(res.data.sunday);
                 this.setState({
                     sunday: res.data.sunday.map((dbId) => 
-                        <Meal id={dbId}></Meal>
+                        <Meal id={dbId} edit={true}></Meal>
                     ),
                     monday: res.data.monday.map((dbId) => 
-                        <Meal id={dbId}></Meal>
+                        <Meal id={dbId} edit={true}></Meal>
                     ),
                     tuesday: res.data.tuesday.map((dbId) => 
-                        <Meal id={dbId}></Meal>
+                        <Meal id={dbId} edit={true}></Meal>
                     ),
                     wednesday: res.data.wednesday.map((dbId) => 
-                        <Meal id={dbId}></Meal>
+                        <Meal id={dbId} edit={true}></Meal>
                     ),
                     thursday: res.data.thursday.map((dbId) => 
-                        <Meal id={dbId}></Meal>
+                        <Meal id={dbId} edit={true}></Meal>
                     ),
                     friday: res.data.friday.map((dbId) => 
-                        <Meal id={dbId}></Meal>
+                        <Meal id={dbId} edit={true}></Meal>
                     ),
                     saturday: res.data.saturday.map((dbId) => 
-                        <Meal id={dbId}></Meal>
+                        <Meal id={dbId} edit={true}></Meal>
                     )
                 })
             })
@@ -84,7 +84,7 @@ class MealPlan extends Component {
                     <div class="col">
                         Friday
                     </div>
-                    <div class="col">
+                    <div class="col last">
                         Saturday
                     </div>
                 </div>
@@ -108,7 +108,7 @@ class MealPlan extends Component {
                     <div class="col" style={{height: "250px"}}>
                         {this.state.friday[0]}
                     </div>
-                    <div class="col" style={{height: "250px"}}>
+                    <div class="col last" style={{height: "250px"}}>
                         {this.state.saturday[0]}
                     </div>
                 </div>
@@ -131,7 +131,7 @@ class MealPlan extends Component {
                     <div class="col" style={{height: "250px"}}>
                         {this.state.friday[1]}
                     </div>
-                    <div class="col" style={{height: "250px"}}>
+                    <div class="col last" style={{height: "250px"}}>
                         {this.state.saturday[1]}
                     </div>
                 </div>
@@ -154,11 +154,10 @@ class MealPlan extends Component {
                     <div class="col" style={{height: "250px"}}>
                         {this.state.friday[2]}
                     </div>
-                    <div class="col" style={{height: "250px"}}>
+                    <div class="col last" style={{height: "250px"}}>
                         {this.state.saturday[2]}
                     </div>
                 </div>
-                
             </div>
             </>
             

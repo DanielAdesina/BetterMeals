@@ -20,17 +20,8 @@ class Meals extends Component {
         }
     }
 
-    annoyed = (event) => {
-        event.preventDefault()
-        this.setState({
-            sanityCheck: "sane"
-        })
-        console.log(this.state.sanityCheck);
-    }
-
     handleClick(event){
         event.preventDefault();
-        let mealArray = [];
         const options = {
             method: 'GET',
             url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
@@ -61,7 +52,7 @@ class Meals extends Component {
                 this.setState({
                     mealsResult: <div class="row row-cols-5">
                         {mealArray.map((meal) =>
-                        <div class="col" style={{marginBottom: "2rem", height: "250px"}}><Meal id={meal.id}></Meal></div>)}
+                        <div class="col" style={{marginBottom: "2rem", height: "250px"}}><Meal id={meal.id} edit={false}></Meal></div>)}
                     </div>
                 })
             }).catch(function (error) {
