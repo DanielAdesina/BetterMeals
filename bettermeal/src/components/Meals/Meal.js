@@ -49,7 +49,6 @@ class Meal extends Component{
     }
     
     showModalClick = () => {
-        alert();
         this.setState({
             showModal: true
         })
@@ -72,7 +71,7 @@ class Meal extends Component{
             changeMealFunc = this.props.changeMealFunc
         }
         return(
-            <div class="card h-100" style={{width: "170px", backgroundColor: "rgb(48, 51, 54)", color: "whitesmoke", marginBottom: "2rem"}} onClick={this.props.mealClick}>
+            <div class="card h-100" style={{width: "170px", backgroundColor: "#13161d", color: "whitesmoke", marginBottom: "2rem"}} onClick={this.props.mealClick}>
                 <img src={imageUrl} class="card-img-top" alt="..." />
                 <div class="card-body" >
                     <h6 class="card-title">{mealTitle}</h6>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import config from "../../config.json";
-import { Accordion, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 
 class MealSnippet extends Component{
@@ -51,7 +50,6 @@ class MealSnippet extends Component{
     }
 
     componentDidMount(){
-        const id = this.props.id
 
         this.loadContents()
         
@@ -89,7 +87,7 @@ class MealSnippet extends Component{
 
         return(
             <>
-                <img style={{width: "278px", height: "185px"}} src={"https://spoonacular.com/recipeImages/" + meal.id + "-556x370.jpg"} 
+                <img alt="Meal" style={{width: "278px", height: "185px"}} src={"https://spoonacular.com/recipeImages/" + meal.id + "-556x370.jpg"} 
                 align="left" class="col-md-8 float mb-3 mt-3 me-5 ms-md-3"></img>
                 <h2 style={{marginTop: "1vh"}}>{meal.title}</h2>
                 <p style={{margin: "2vw", fontSize: pFontSize + "px"}} dangerouslySetInnerHTML={{__html: summary}}></p>

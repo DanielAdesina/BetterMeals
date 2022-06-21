@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
-import { useLocation, useHistory, Redirect,  useNavigate} from 'react-router-dom';
 import "./login.css"
 
 
@@ -9,7 +8,6 @@ function Login(){
     const [loginMessage, setMessage] = React.useState("");
     const [usernameInput, setUsernameInput] = React.useState("");
     const [passwordInput, setPasswordInput] = React.useState("");
-    const {state} = useLocation();
 
     function handleLogin(event){
         event.preventDefault();
@@ -20,7 +18,6 @@ function Login(){
         axios.post('http://localhost:5000/user/login', user)
             .then(res => {
                 if(res.data.message === "Success"){
-                    // alert(res.data.token);
                     localStorage.setItem("token", res.data.token);
                     axios.defaults.headers.common['x-access-token'] = res.data.token;
                     setMessage("");

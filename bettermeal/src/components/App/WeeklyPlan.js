@@ -52,7 +52,6 @@ class WeeklyPlan extends Component{
         let planCopy = this.state.currMealplan
         planCopy[day][mealtime] = newMeal
         planCopy[day][mealtime + 3] = newTitle
-        console.log(planCopy[day])
         const config = {
             headers: {
                 "x-access-token": localStorage.getItem("token")
@@ -64,10 +63,10 @@ class WeeklyPlan extends Component{
     }
 
     render(){
-        let content = <div style={{backgroundColor: "rgb(48, 51, 54)", position: "relative", top: "10vh", display: "block", margin: "auto", width: "60vw"}}>
+        let content = <div style={{backgroundColor: "#13161d", position: "relative", top: "10vh", display: "block", margin: "auto", width: "60vw"}}>
             <h1 style={{textAlign: "center", color: "white", padding: "2vmax", fontFamily: "Lexend"}}>Set an Active Meal Plan First!</h1></div>
         if(this.props.id){
-            content = <><div style={{position: "relative", display: "block", margin: "auto", top: "10vh", width: "60vw", backgroundColor: "rgb(48, 51, 54)", color: "white"}}>
+            content = <><div style={{position: "relative", display: "block", margin: "auto", top: "10vh", width: "60vw", backgroundColor: "#13161d", color: "white"}}>
         <div class="row row-cols-2">
                     <div class="col" style={{width: "16vw"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Sunday:</h2>

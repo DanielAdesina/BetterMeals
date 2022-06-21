@@ -40,6 +40,6 @@ dbconn.once('open', function callback () {
     app.use("/mealplan", mealPlanRouter);
 
     app.listen(5000, function() {
-        console.log("Server is running on Port: 5000");
+        
     });
 });

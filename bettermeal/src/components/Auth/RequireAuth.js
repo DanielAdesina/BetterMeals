@@ -1,13 +1,11 @@
 import * as React from "react";
 import axios from "axios";
-import { useLocation, useHistory } from 'react-router-dom'
 
 const authContext = React.createContext();
 
 export function useAuth(){
     const [auth, setAuth] = React.useState(false);
     const [user, setUser] = React.useState(null);
-    alert("boo");
     const config = {
         headers:{
         "x-access-token": localStorage.getItem("token")
@@ -22,23 +20,6 @@ export function useAuth(){
     return { auth, user }
 }
 
-// export function RequireAuth({ children }){
-//     // const { authorized } = useAuth();
-//     // const history = useHistory();
-//     // alert("??");
-//     // console.log("HERE IT GOES, ITS GOING, GOING GREAT");
-//     return children;
-
-//     // if(authorized === false){
-//     //     alert("sigh");
-//     //     history.push("/meals"); 
-//     // }
-//     // else{
-//     //     return children;
-//     // }
-   
-
-// }
 
 export function AuthProvider({ children }){
     const {auth, user} = useAuth()

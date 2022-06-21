@@ -107,7 +107,7 @@ class TodaysMeal extends Component{
             <button class={this.state.buttonStates[0]} onClick={() => this.mealtimeClick(0)} style={{top: '26vh', left: '9vw'}}><span class="rounded-text">Breakfast</span></button>
             <button class={this.state.buttonStates[1]} onClick={() => this.mealtimeClick(1)} style={{top: '36vh', left: '9vw'}}><span class="rounded-text">Lunch</span></button>
             <button class={this.state.buttonStates[2]} onClick={() => this.mealtimeClick(2)} style={{top: '46vh', left: '9vw'}}><span class="rounded-text">Dinner</span></button>
-            <div type="container" style={{position: "absolute", left: "25vw", top: "30vh", width: "50vw", backgroundColor: "rgb(48, 51, 54)", color: "white", fontFamily: "Lexend"}}>
+            <div type="container" style={{position: "absolute", left: "25vw", top: "26vh", width: "50vw", backgroundColor: "#13161d", color: "white", fontFamily: "Lexend"}}>
                 {snippet}
             </div>
             

@@ -5,7 +5,7 @@ const Weekday = require("../models/Weekday");
 router.get('/', function(req, res){
     Weekday.find(function(err, weekday){
         if(err){
-            console.log(err);
+            res.json(err)
         }
         else{
             res.json(weekday)

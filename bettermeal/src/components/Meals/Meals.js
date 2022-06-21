@@ -1,11 +1,9 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Meals.css"
-import ReactDOMServer from 'react-dom/server'
 import axios from 'axios';
 import Meal from './Meal';
 import config from "../../config.json";
-import reactElementToJSXString from 'react-element-to-jsx-string';
 
 
 
@@ -56,8 +54,6 @@ class Meals extends Component {
             }
         };
         const storageCheck = JSON.parse(localStorage.getItem(this.state.searchField));
-        // console.log(Date.now())
-        // console.log(storageCheck.ttl)
         if(storageCheck && (Date.now() < storageCheck.ttl)){
             const mealArray = Array.from(storageCheck.results);
             this.setState({
@@ -96,16 +92,14 @@ class Meals extends Component {
                         onChange={event => {this.setState({searchField: event.target.value})}}/>
                         
                         
-                        {/* <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button"></button>
-                        </span> */}
+                        
                         
                     </div>
                     <span class="input-group-btn">
                         <button class="search-icon" type="submit" onClick={event => {this.setState({mealsResult: <></>}); this.handleClick(event)}}></button>
                     </span>
                 </form>
-                {/* <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealsModal"></button> */}
+               
                 
                 {mealsResult}
                 

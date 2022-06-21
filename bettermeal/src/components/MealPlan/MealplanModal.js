@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 import { Modal } from 'react-bootstrap';
-import config from "../../config.json";
 
 
 

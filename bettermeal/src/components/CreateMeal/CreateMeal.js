@@ -28,17 +28,14 @@ class CreateMeal extends Component {
     onSubmit(e) {
         e.preventDefault();
         
-        console.log(`Form submitted:`);
-        console.log(`Meal Name: ${this.state.meal_name}`);
-        console.log(`Recipe: ${this.state.recipe}`);
-
+        
         let newMeal = {
             name: this.state.meal_name,
             recipe: this.state.recipe
         };
 
         axios.post('http://localhost:5000/meals/add', newMeal)
-            .then(res => console.log(res.data));
+            .then(res => {});
         
         this.setState({
            meal_name: '',

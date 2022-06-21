@@ -29,11 +29,8 @@ class MealsModal extends Component{
             }
         };
         const storageCheck = JSON.parse(localStorage.getItem(this.state.searchField));
-        // console.log(Date.now())
-        // console.log(storageCheck.ttl)
         if(storageCheck && (Date.now() < storageCheck.ttl)){
             const mealArray = Array.from(storageCheck.results);
-            console.log(mealArray);
             this.setState({
                 mealsResult: <div class="row row-cols-3">
                     {mealArray.map((meal) =>
@@ -45,7 +42,6 @@ class MealsModal extends Component{
         }
         else{
             axios.request(options).then(response => {
-                alert("broken, also spending...")
                 response.data.ttl = Date.now() + (86400 * 1000);
                 localStorage.setItem(this.state.searchField, JSON.stringify(response.data));
                 const mealArray = Array.from(response.data.results);

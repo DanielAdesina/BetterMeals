@@ -27,7 +27,6 @@ class CurrentPlan extends Component{
         }
         axios.get('http://localhost:5000/user/getActive', config)
         .then(activePlanRes => {
-            console.log(activePlanRes.data)
             if(activePlanRes.data.isAuth === false){
                 window.location = "/login"; 
             }
@@ -38,8 +37,6 @@ class CurrentPlan extends Component{
     }
 
     render(){
-        const snippet = this.state.mealSnippet
-        console.log(this.state.mealSnippet)
         return (
         <>
             <div class="btn-group" role="group">

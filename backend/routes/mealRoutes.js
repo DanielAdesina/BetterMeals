@@ -5,7 +5,7 @@ const MealModule = require("../models/Meal")
 router.get('/', function(req, res){
     MealModule.Meal.find(function(err, meals){
         if(err){
-            console.log(err);
+            res.json(err)
         }
         else{
             res.json(meals)
@@ -16,7 +16,6 @@ router.get('/', function(req, res){
 router.get('/:id', function(req, res) {
     let id = req.params.id;
     MealModule.Meal.findById(id, function(err, meal) {
-        console.log(meal);
         res.json(meal);
     });
 });

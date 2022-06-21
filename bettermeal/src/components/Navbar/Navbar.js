@@ -26,7 +26,7 @@ export default class Navbar extends Component{
   render(){
     return (
         <div>
-          <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "rgb(48, 51, 54)" }}>
+          <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "#13161d" }}>
                 <Link to="/" class="navbar-brand">
                   <img class="d-inline-block align-middle" alt="Logo" src={logo} width="45" height="45"></img>
                   <span class="navbar-brand-text">BetterMeals</span>

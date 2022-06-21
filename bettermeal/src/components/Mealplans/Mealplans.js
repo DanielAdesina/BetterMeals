@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Mealplans.css"
-import { Link, Redirect, Router, useHistory } from 'react-router-dom';
-import { useAuth } from '../Auth/RequireAuth';
+import { Link } from 'react-router-dom';
 import "../MealPlan/MealplanModal"
 import EditModal from '../MealPlan/MealplanModal';
 
@@ -24,14 +23,13 @@ class Mealplans extends Component {
         this.onClickHandler = this.onClickHandle.bind(this)
     }
     onClickHandle = (event) =>{
-         alert();
-         event.stopPropagation();
-         return <Mealplans></Mealplans>
+        event.stopPropagation();
+        return <Mealplans></Mealplans>
 
     }
 
     linkHandler = (event) =>{
-        if(event.target.tagName.toLowerCase() != 'a'){
+        if(event.target.tagName.toLowerCase() !== 'a'){
             event.preventDefault();
         }
     }
@@ -43,7 +41,6 @@ class Mealplans extends Component {
     }
 
     newRedirect = () => {
-        const newVal = this.state.showNew ? false : true
         this.setState({showNew: true})
     }
 
@@ -62,7 +59,7 @@ class Mealplans extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.post('http://localhost:5000/mealplan/namechange/' + id, {name: nameParam}, config).then(() => {this.refreshPlans(); console.log("it should work prob")})
+        axios.post('http://localhost:5000/mealplan/namechange/' + id, {name: nameParam}, config).then(() => {this.refreshPlans();})
     }
 
     newPlansFunc = () => (nameParam) => {
@@ -82,7 +79,7 @@ class Mealplans extends Component {
             saturday: ["", "", "", "", "", ""],
             date_created: ""
         }
-        axios.post('http://localhost:5000/mealplan/new', newPlan, config).then(() => {this.refreshPlans(); console.log("it should work prob")})
+        axios.post('http://localhost:5000/mealplan/new', newPlan, config).then(() => {this.refreshPlans();})
     }
 
     deletePlanFunc = (id) => {
@@ -91,7 +88,7 @@ class Mealplans extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.post('http://localhost:5000/mealplan/delete', {planId: id}, config).then(() => {this.refreshPlans(); console.log("it should work prob")})
+        axios.post('http://localhost:5000/mealplan/delete', {planId: id}, config).then(() => {this.refreshPlans();})
     }
     refreshPlans = () => {
         const config = {
@@ -110,13 +107,14 @@ class Mealplans extends Component {
                 this.setState({
                     mealplanNames: mealplans.map((plan) => 
                         
-                        <Link to={"/mealplan/" + plan._id} class="list-group-item list-group-item-action d-flex justify-content-between border-end-0 border-start-0" onClick={this.linkHandler}>
+                        <Link to={"/mealplan/" + plan._id} class="list-group-item list-group-item-action d-flex justify-content-between border-end-0 border-start-0"
+                        style={{backgroundColor: "#13161d", color: "whitesmoke"}} onClick={this.linkHandler}>
                             {plan.name}
                             <span>
                                 <span class="btn edit-button" onClick={() => this.editRedirect(plan._id)}></span>
                                 {/* <span class="btn edit-button" onClick={this.editRedirect}></span> */}
-                                <span href="" class="btn delete-button" onClick={() => {alert(); this.deletePlanFunc(plan._id)}}></span>
-                                <input style={{position: "relative", top: "2px", marginLeft: "2px"}} type="checkbox" checked={activePlanRes.data.activePlanId === plan._id ? true : false} onChange={() => this.setActivePlan(plan._id)}></input>
+                                <span href="" class="btn delete-button" onClick={() => {this.deletePlanFunc(plan._id)}}></span>
+                                <input style={{position: "relative", top: "2px", marginLeft: "2px"}} type="checkbox" title="Set Active" checked={activePlanRes.data.activePlanId === plan._id ? true : false} onChange={() => this.setActivePlan(plan._id)}></input>
                             </span>
                             
                         </Link>
@@ -130,13 +128,12 @@ class Mealplans extends Component {
    
     componentDidMount(){
         this.refreshPlans()
-        // console.log(this.state.mealplanNames)
     }
         
     render() {
         return (
-            <div class="container" id="MealplansContainer">
-                <h2>Meal Plans</h2>
+            <div class="container" id="MealplansContainer" style={{borderRadius: "1rem", padding: "1vmax"}}>
+            <h2 style={{color: "whitesmoke"}}>Meal Plans</h2>
                 {/* <hr /> */}
                 <div class="list-group list-group-flush">
                     {this.state.mealplanNames}

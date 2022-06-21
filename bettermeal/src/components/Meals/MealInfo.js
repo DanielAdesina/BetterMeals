@@ -30,7 +30,7 @@ class MealInfo extends Component{
         if(storageCheck && (Date.now() < storageCheck.ttl)){
             this.setState({meal: storageCheck})
             const imageList = <div class="row">
-                    {storageCheck.extendedIngredients.map((ingredient) => <div class="col-6"><img
+                    {storageCheck.extendedIngredients.map((ingredient) => <div class="col-6"><img alt="ingredient"
                 style={{width: "50px", height: "50x"}} src={"https://spoonacular.com/cdn/ingredients_100x100/" + ingredient.image}></img><h6>{ingredient.original}</h6></div>)}
                 </div>;
             let instructions = <></>;
@@ -43,15 +43,13 @@ class MealInfo extends Component{
             this.setState({meal: storageCheck, 
                     images: imageList,
                 steps: instructions})         
-            console.log(storageCheck)
-            console.log(this.state.steps)
         }
         else{
             axios.request(options).then(res => {
                 res.data.ttl = Date.now() + (86400 * 1000);
                 localStorage.setItem(id, JSON.stringify(res.data));
                 const imageList = <div class="row">
-                    {res.data.extendedIngredients.map((ingredient) => <div class="col-6"><img
+                    {res.data.extendedIngredients.map((ingredient) => <div class="col-6"><img alt="ingredient"
                 style={{width: "50px", height: "50x"}} src={"https://spoonacular.com/cdn/ingredients_100x100/" + ingredient.image}></img><h6>{ingredient.original}</h6></div>)}
                 </div>
                 let instructions = <></>;
@@ -73,12 +71,11 @@ class MealInfo extends Component{
     render(){
         const id = this.props.match.params.id
         let meal = this.state.meal
-        console.log(meal)
         return(
             <>
             <Navbar></Navbar>
             <div class="clearfix" style={{backgroundColor: 'rgba(255, 255, 255, 0.7)', fontFamily: "Lexend"}}>
-                <img style={{width: "556px", height: "370px"}} src={"https://spoonacular.com/recipeImages/" + id + "-556x370.jpg"} align="left" class="col-md-8 float mb-3 mt-2 me-5 ms-md-3"></img>
+                <img alt="meal" style={{width: "556px", height: "370px"}} src={"https://spoonacular.com/recipeImages/" + id + "-556x370.jpg"} align="left" class="col-md-8 float mb-3 mt-2 me-5 ms-md-3"></img>
                 <h1 style={{fontFamily: "Lexend"}}>{meal.title}</h1>
                 <p style={{fontSize: "20px"}} dangerouslySetInnerHTML={{__html: meal.summary}}></p>
                 

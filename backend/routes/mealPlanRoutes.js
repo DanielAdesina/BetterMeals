@@ -133,7 +133,7 @@ router.post('/delete', auth.verifyJWT, function(req, res){
     const MealplanModel = mongoose.model("Mealplan", Mealplan.Schema, req.username + "Mealplan");
     MealplanModel.findByIdAndDelete(id, function (err, plan){
         if (err){
-            console.log(err)
+            res.json({message: "error" + err})
         }
         else{
             res.json({message: "deleted a plan" + plan.name});
@@ -143,33 +143,6 @@ router.post('/delete', auth.verifyJWT, function(req, res){
 });
 
 
-// router.post('/update/:day/:meal', function(req, res) {
-//     let id = req.params.id;
-//     let day = req.params.day;
-//     let mealTime = req.params.meal;
-//     Mealplan.find(function(err, mealplans) {
-//         let mealplan = mealplans[0];
-//         let weekdayId = mealplan[day];
-//         Weekday.findById(weekdayId, function(err, weekday) {
-//             if (!weekday){
-//                 res.status(404).send("data is not found");
-//             }
-//             else{
-//                 weekday[mealTime] = req.body._id;
-//                 let mealId = weekday[mealTime];
-//                 Meal.findById(mealId, function(err, meal){
-//                     console.log(meal);
-//                 });
-    
-//                 weekday.save().then(weekday => {
-//                     res.json('Weekday updated!');
-//                 })
-//                 .catch(err => {
-//                     res.status(400).send("Update not possible");
-//                 });
-//             }
-//         });
-//     });
-// });
+
 
 module.exports = router;
