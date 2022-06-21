@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../newlogo.png";
+import "./navbar.css"
 
 
 export default class Navbar extends Component{
@@ -38,6 +39,7 @@ export default class Navbar extends Component{
                   </ul>
                 </div>
                 <div class="justify-content-end navbar-collapse collapse">
+                  <span class="logout-span"><button class="logout-btn" title='Logout' onClick={() => {localStorage.removeItem("token"); window.location="/login"}}></button></span>
                   <span class="navbar-text">
                       {"Logged in as " + this.state.user}
                   </span>

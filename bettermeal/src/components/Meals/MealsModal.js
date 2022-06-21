@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Meal from './Meal';
 import { Modal } from 'react-bootstrap';
+import config from "../../config.json";
+
 
 
 class MealsModal extends Component{
@@ -23,7 +25,7 @@ class MealsModal extends Component{
             params: {query: this.state.searchField, number: '10', offset: '0'},
             headers: {
               'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-              'X-RapidAPI-Key': '51be17977amsh1e7b4aa1af671dep16977ajsn18b85345a72c'
+              'X-RapidAPI-Key': config['api-key']
             }
         };
         const storageCheck = JSON.parse(localStorage.getItem(this.state.searchField));
@@ -31,10 +33,13 @@ class MealsModal extends Component{
         // console.log(storageCheck.ttl)
         if(storageCheck && (Date.now() < storageCheck.ttl)){
             const mealArray = Array.from(storageCheck.results);
+            console.log(mealArray);
             this.setState({
                 mealsResult: <div class="row row-cols-3">
                     {mealArray.map((meal) =>
-                    <div class="col" style={{marginBottom: "2rem", height: "250px"}}><Meal id={meal.id}></Meal></div>)}
+                    <div class="col" style={{marginBottom: "2rem", height: "250px"}} onClick={() => {this.props.changeMealFunc(meal.id, meal.title); this.props.closeFunc()}}>
+                        <Meal id={meal.id} title={meal.title}></Meal>
+                    </div>)}
                 </div>
             })
         }
@@ -47,7 +52,9 @@ class MealsModal extends Component{
                 this.setState({
                     mealsResult: <div class="row row-cols-3">
                         {mealArray.map((meal) =>
-                        <div class="col" style={{marginBottom: "2rem", height: "250px"}}><Meal id={meal.id}></Meal></div>)}
+                         <div class="col" style={{marginBottom: "2rem", height: "250px"}} onClick={() => {this.props.changeMealFunc(meal.id, meal.title); this.props.closeFunc()}}>
+                             <Meal id={meal.id} title={meal.title}></Meal>
+                         </div>)}
                     </div>
                 })
             }).catch(function (error) {
@@ -65,7 +72,8 @@ class MealsModal extends Component{
                         
                         <div class="form-outline mb-4 input-group inner-addon right-addon">
                             
-                            <input type="text"  id="mealsearch" style={{left: '0vw', width: '100%'}} placeholder='Search for any meal!' value={this.state.searchField} onChange={event => {this.setState({searchField: event.target.value})}}/>
+                            <input type="text"  id="mealsearch" style={{left: '0vw', width: '100%'}} placeholder='Search for any meal!' 
+                            value={this.state.searchField} onChange={event => {this.setState({searchField: event.target.value})}}/>
                             
                             
                             {/* <span class="input-group-btn">

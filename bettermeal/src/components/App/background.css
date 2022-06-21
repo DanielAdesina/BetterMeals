@@ -1,6 +1,8 @@
 .bg{
     background-image: url(../bgimagecp.jpg);
-    height: 100vh;
+    /* height: 100vh; */
+    width: 100vw;
+    background-repeat: repeat;
 }
 
 /* .bg::before{
@@ -17,6 +19,23 @@
     font-family: 'Lato';
     src: url(../Lato-Light.ttf);
   }
+@font-face {
+font-family: 'Lexend';
+src: url(../LexendDeca-Light.ttf);
+}
+
+
+.accordion-button:not(.collapsed) {
+    color: #ffffff;
+    background-color: rgb(48, 51, 54);
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.accordion-button{
+    color: #ffffff;
+    background-color: rgb(48, 51, 54);
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
 
 .navbar-brand{
     margin-left: 5%
@@ -71,8 +90,8 @@
  .btn-secondary{
     position: relative;
     color: rgb(255, 255, 255);
-    left: 13vw;
-    top: 0vh;
+    left: 29vw;
+    top: 5vh;
     /* padding-left: 10%;
     padding-right: 10%; */
     width: 20vw;
@@ -82,24 +101,9 @@
  }
 
  .card{
-     position: absolute;
+     /* position: absolute; */
      width: 20vw;
      
- }
-
- #breakfast{
-    left: 15vw;
-    top: 35vh;
- }
-
- #lunch{
-    left: 39vw;
-    top: 35vh;
- }
-
- #dinner{
-    left: 63vw;
-    top: 35vh;
  }
 
 #editmeals{
@@ -112,3 +116,63 @@
     color: white;
     font-weight: 500;
 }
+
+
+
+.rounded{
+    margin: 20px auto;
+    font-family: 'Lato';
+    border: none;
+    border-radius:50px;
+    padding: 10px 44px;
+    font-size: 36px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    
+}
+
+.rounded-focus{
+    margin: 20px auto;
+    font-family: 'Lato';
+    border: none;
+    border-radius:50px;
+    padding: 10px 44px;
+    font-size: 36px;
+    position: absolute;
+
+    background: rgb(48, 51, 54);
+    
+}
+
+  
+   
+.rounded::before{
+      border-radius:50px;
+      transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      content: '';
+      width: 50%;
+      height: 100%;
+      background: rgb(255, 255, 255);
+      position: absolute;
+      top: 0;
+      left: 0;
+}
+.rounded-text{
+        color:#ffffff;
+        mix-blend-mode: difference;
+}
+      
+.rounded::before{
+        border-radius: 50px;
+        width: 25%;
+        background: rgb(48, 51, 54);
+      }
+.rounded:hover::before{
+        
+        background: rgb(48, 51, 54);
+          width: 100%;
+        }
+      
+    
+  
+  

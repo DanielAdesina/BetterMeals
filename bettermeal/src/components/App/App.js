@@ -6,12 +6,16 @@ import Mealplans from "../Mealplans/Mealplans"
 import Meals from "../Meals/Meals";
 import Logout from "../Auth/Logout"
 import Login from "../Auth/Login"
+import Register from "../Auth/Register"
 // import useAuth from "../Auth/RequireAuth"
 import CreateMeal from "../CreateMeal/CreateMeal";
 import logo from "../newlogo.png"
 import './background.css'
 import axios from 'axios'
 import Navbar from "../Navbar/Navbar";
+import TodaysMeal from "./TodaysMeal"
+import CurrentPlan from "./CurrentPlan"
+import MealInfo from "../Meals/MealInfo"
 
 // class App extends Component {
 //   render() {
@@ -57,55 +61,6 @@ import Navbar from "../Navbar/Navbar";
 
 
 
-class TodaysMeal extends Component{
-  render(){
-    return (
-      <>
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-secondary btn-lg">Today's Meals</button>
-            <button type="button" class="btn btn-secondary btn-lg">Weekly Plan</button>
-          </div>
-          <div class="card text-center" id="breakfast">
-            <div class="card-header">
-              Breakfast
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Random Meal</h5>
-              <p class="card-text">A random meal that I created randomly, very cool</p>
-              <a href="#" class="btn btn-primary">View Recipe</a>
-            </div>
-            <div class="card-footer text-muted">
-              Basic Meal Plan #1
-            </div>
-          </div><div class="card text-center" id="lunch">
-            <div class="card-header">
-              Lunch
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Random Meal #2</h5>
-              <p class="card-text">A random meal that I created randomly, very cool</p>
-              <a href="#" class="btn btn-primary">View Recipe</a>
-            </div>
-            <div class="card-footer text-muted">
-              Basic Meal Plan #2
-            </div>
-          </div><div class="card text-center" id="dinner">
-            <div class="card-header">
-              Dinner
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Random Meal #3</h5>
-              <p class="card-text">A random meal that I created randomly, very cool</p>
-              <a href="#" class="btn btn-primary">View Recipe</a>
-            </div>
-            <div class="card-footer text-muted">
-              Basic Meal Plan #2
-            </div>
-          </div>
-      </>
-    )
-  }
-}
 
 function useAuth(){
   const [auth, setAuth] = React.useState(false);
@@ -159,17 +114,19 @@ class App extends Component{
   }
   render() {
     return(
-      <div class="bg">
+      <div class="bg" style={{height: "100vh", overflow: "auto"}}>
         
         <Router>
           
           
 
-            <Route exact path="/" render={() => <><Navbar></Navbar><TodaysMeal></TodaysMeal></>} />
+            <Route exact path="/" render={() => <><Navbar></Navbar><CurrentPlan></CurrentPlan></>} />
             <Route exact path="/meals" render={() => <><Navbar></Navbar><Meals></Meals></>} />
             <Route exact path="/mealplans" render={() => <><Navbar></Navbar><div class="container" id="todaysplancontainer"><Mealplans></Mealplans></div></>} />
             <Route exact path="/mealplan/:id" component={MealPlan} />
             <Route exact path="/login" component={Login}></Route>
+            <Route exact path="/register" component={Register}></Route>
+            <Route exact path="/meal/:id" component={MealInfo}></Route>
      
         </Router>
 

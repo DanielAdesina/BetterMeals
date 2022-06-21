@@ -21,11 +21,12 @@ router.post("/register", function(req, res){
                         user.password = password;
                         const savedUser = new UserModule.User({
                             username: user.username,
-                            password: user.password
+                            password: user.password,
+                            activePlanId: ""
                         });
                         savedUser.save()
                             .then(user => {
-                                res.status(200).json({message: 'user added successfully' + user.username});
+                                res.status(200).json({message: 'user added successfully'});
                             })
                             .catch(err => {
                                 res.status(400).json({message: 'adding user failed: ' + err});
@@ -102,6 +103,19 @@ router.get("/isUserAuth", verifyJWT, function(req, res){
             userId: req.userId,
             isAuth: true})
 });
+
+router.post("/setActive", verifyJWT, function(req, res){
+    UserModule.User.findById(req.userId, function(err, user){
+        user.activePlanId = req.body.planId;
+        user.save().then(res.json({message: "active plan set"}))
+    })
+})
+
+router.get("/getActive", verifyJWT, function(req, res){
+    UserModule.User.findById(req.userId, function(err, user){
+        res.json({activePlanId: user.activePlanId})
+    })
+})
 
 
 exports.router = router;

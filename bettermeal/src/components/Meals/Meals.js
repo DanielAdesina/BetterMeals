@@ -4,6 +4,7 @@ import "./Meals.css"
 import ReactDOMServer from 'react-dom/server'
 import axios from 'axios';
 import Meal from './Meal';
+import config from "../../config.json";
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
 
@@ -15,20 +16,43 @@ class Meals extends Component {
         this.state = {
             searchField: "",
             mealsResult: <></>,
-            sanityCheck: "insane",
-            clicked: false
         }
     }
+    componentDidMount(){
+        const config2 = {
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            }
+        }
+        axios.get('http://localhost:5000/user/isUserAuth', config2)
+            .then(res => {
+                if(res.data.isAuth === false){
+                    window.location = "/login"; 
+                }
+            })
+    }
+
 
     handleClick(event){
         event.preventDefault();
+        const config2 = {
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            }
+        }
+        axios.get('http://localhost:5000/user/isUserAuth', config2)
+            .then(res => {
+                if(res.data.isAuth === false){
+                    window.location = "/login"; 
+                }
+            })
         const options = {
             method: 'GET',
             url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
             params: {query: this.state.searchField, number: '10', offset: '0'},
             headers: {
               'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-              'X-RapidAPI-Key': '51be17977amsh1e7b4aa1af671dep16977ajsn18b85345a72c'
+              'X-RapidAPI-Key': config['api-key']
             }
         };
         const storageCheck = JSON.parse(localStorage.getItem(this.state.searchField));
@@ -39,20 +63,19 @@ class Meals extends Component {
             this.setState({
                 mealsResult: <div class="row row-cols-5">
                     {mealArray.map((meal) =>
-                    <div class="col" style={{marginBottom: "2rem", height: "250px"}}><Meal id={meal.id}></Meal></div>)}
+                    <div class="col" style={{marginBottom: "2rem", height: "250px"}}><Meal id={meal.id} title={meal.title} mealClick={() => {}}></Meal></div>)}
                 </div>
             })
         }
         else{
             axios.request(options).then(response => {
-                alert("broken, also spending...")
                 response.data.ttl = Date.now() + (86400 * 1000);
                 localStorage.setItem(this.state.searchField, JSON.stringify(response.data));
                 const mealArray = Array.from(response.data.results);
                 this.setState({
                     mealsResult: <div class="row row-cols-5">
                         {mealArray.map((meal) =>
-                        <div class="col" style={{marginBottom: "2rem", height: "250px"}}><Meal id={meal.id} edit={false}></Meal></div>)}
+                        <div class="col" style={{marginBottom: "2rem", height: "250px"}}><Meal id={meal.id} title={meal.title} mealClick={() => {}}></Meal></div>)}
                     </div>
                 })
             }).catch(function (error) {
@@ -62,14 +85,15 @@ class Meals extends Component {
     }
 
     render() {
-
+        const {searchField, mealsResult} = this.state
         return (
             <div class="container" id="meals-container">
                 <form id="mealsearch-form">
                 
                     <div class="form-outline mb-4 input-group inner-addon right-addon">
                         
-                        <input type="text"  id="mealsearch" placeholder='Search for any meal!' value={this.state.searchField} onChange={event => {this.setState({searchField: event.target.value})}}/>
+                        <input type="text"  id="mealsearch" placeholder='Search for any meal!' value={this.state.searchField} 
+                        onChange={event => {this.setState({searchField: event.target.value})}}/>
                         
                         
                         {/* <span class="input-group-btn">
@@ -78,12 +102,12 @@ class Meals extends Component {
                         
                     </div>
                     <span class="input-group-btn">
-                        <button class="search-icon" type="submit" onClick={event => this.handleClick(event)}></button>
+                        <button class="search-icon" type="submit" onClick={event => {this.setState({mealsResult: <></>}); this.handleClick(event)}}></button>
                     </span>
                 </form>
                 {/* <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealsModal"></button> */}
                 
-                {this.state.mealsResult}
+                {mealsResult}
                 
                 
                                     
