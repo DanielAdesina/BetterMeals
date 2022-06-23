@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build",
+    "build": "cd client && chmod +x node_modules/.bin/react-scripts && npm run build",
         "install-client": "cd client && npm install",
         "heroku-postbuild": "npm run install-client && npm run build",
         "server": "nodemon server.js",
