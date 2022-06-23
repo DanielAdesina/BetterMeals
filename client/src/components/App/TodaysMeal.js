@@ -90,7 +90,7 @@ class TodaysMeal extends Component{
             }
             else{
                 this.setState({activePlan: null})
-                this.setState({mealSnippets: [<h1 style={{padding: "20px"}}>Head to Meal Plans and click a Mealplans Checkbox to select an Active Meal Plan!</h1>]})
+                this.setState({mealSnippets: [<h1 style={{padding: "20px"}}>Head to Meal Plans and click a Mealplan Checkbox to select an Active Meal Plan!</h1>]})
             }
             
         })
