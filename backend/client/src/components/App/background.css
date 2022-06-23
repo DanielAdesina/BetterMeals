@@ -1,0 +1,181 @@
+.bg{
+    background-image: url(../Auth/peakpx.jpg);
+    /* height: 100vh; */
+    width: 100vw;
+    background-repeat: repeat;
+}
+
+/* .bg::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px; 
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(148, 212, 241, 0.3);
+}    */
+
+@font-face {
+    font-family: 'Lato';
+    src: url(../Lato-Light.ttf);
+  }
+@font-face {
+font-family: 'Lexend';
+src: url(../LexendDeca-Light.ttf);
+}
+
+
+.accordion-button:not(.collapsed) {
+    color: #ffffff;
+    background-color: #13161d;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.accordion-button{
+    color: #ffffff;
+    background-color: #13161d;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.navbar-brand{
+    margin-left: 5%
+}
+.navbar-brand-text {
+    position: absolute;
+    font-family: 'Lato';
+    font-size: xx-large;
+    /* width: 100%;
+    left: 0;
+    top: 0;
+    
+   
+    /* margin-top: 5%; */
+    text-align: middle;
+    margin-left: 1%;
+    color: rgb(255, 255, 255)
+  } 
+.navbar-right{
+    position: absolute;
+    font-family: 'Lato';
+    font-size: large;
+    color: rgb(255, 255, 255);
+    text-align: right;
+    margin-left: 33%;
+ }
+ /* .navbar-collapse{
+    font-family: 'Lato';
+    color: rgb(255, 255, 255);
+    text-align: right;
+    margin-left: 10%;
+ } */
+ /* .navbar-item{
+     color: white
+ } */
+
+ #todaysplancontainer{
+     background-color: rgba(255, 255, 255, 0);
+ }
+
+ .nav-link{
+    font-family: 'Lato';
+    color: white
+ }
+
+ .navbar-text{
+    font-family: 'Lato';
+    color: white;
+    margin-right: 5%;
+ }
+
+ .btn-secondary{
+    position: relative;
+    color: rgb(255, 255, 255);
+    left: 29vw;
+    top: 5vh;
+    /* padding-left: 10%;
+    padding-right: 10%; */
+    width: 20vw;
+    white-space: nowrap;
+    border: 1px black;
+    background-color: rgba(1, 1, 1, 0.7);
+ }
+
+ .card{
+     /* position: absolute; */
+     width: 20vw;
+     
+ }
+
+#editmeals{
+     left: 39vw;
+     top: 40vw;
+}
+
+.btn{
+    font-family: 'Lato';
+    color: white;
+    font-weight: 500;
+}
+
+
+
+.rounded{
+    margin: 20px auto;
+    font-family: 'Lato';
+    border: none;
+    border-radius:50px;
+    padding: 10px 44px;
+    font-size: 36px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    background: transparent;
+    
+    
+}
+
+.rounded-focus{
+    margin: 20px auto;
+    font-family: 'Lato';
+    border: none;
+    border-radius:50px;
+    padding: 10px 44px;
+    font-size: 36px;
+    position: absolute;
+
+    background: #13161d;
+    
+}
+
+  
+   
+.rounded::before{
+      border-radius:50px;
+      transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      content: '';
+      width: 50%;
+      height: 100%;
+     
+      position: absolute;
+      top: 0;
+      left: 0;
+}
+.rounded-text{
+        font-weight: bolder;
+        color:#7acaff;
+        mix-blend-mode: difference;
+}
+      
+.rounded::before{
+        border-radius: 50px;
+        width: 25%;
+        background: #13161d;
+      }
+.rounded:hover::before{
+        
+        background: #13161d;
+          width: 100%;
+        }
+      
+    
+  
+  
