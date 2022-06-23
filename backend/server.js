@@ -8,7 +8,7 @@ const mealRouter = require('./routes/mealRoutes');
 const weekdayRouter = require('./routes/weekdayRoutes');
 const mealPlanRouter = require('./routes/mealPlanRoutes');
 const authRoutes = require('./routes/authRoutes');
-
+const path = require("path")
 
 
 const mongoose = require("mongoose");
@@ -38,6 +38,12 @@ dbconn.once('open', function callback () {
     app.use("/meals", mealRouter);
     app.use("/weekdays", weekdayRouter);
     app.use("/mealplan", mealPlanRouter);
+
+    app.use(express.static(path.resolve(__dirname, "./client/build")));
+    // Step 2:
+    app.get("*", function (request, response) {
+    response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+    });
 
     app.listen(process.env.PORT || 5000, function() {
         
