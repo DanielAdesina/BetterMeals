@@ -20,7 +20,7 @@ app.use(express.json());
 
 
 mongoose.connect(
-    process.env.CONNSTR, 
+    "mongodb+srv://mern:mongodb@cluster0.4c2i1.mongodb.net/mealplan?retryWrites=true&w=majority", 
     {
         useNewUrlParser: true,
         useFindAndModify: false,
@@ -44,8 +44,9 @@ dbconn.once('open', function callback () {
     app.get("*", function (request, response) {
     response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
     });
+    const PORT = process.env.PORT || 5000
 
-    app.listen(process.env.PORT || 5000, function() {
-        
+    app.listen(PORT, function() {
+        console.log("server listening on port " + PORT)
     });
 });
