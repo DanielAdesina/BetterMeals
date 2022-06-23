@@ -1,9 +1,10 @@
 #MealplanContainer{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(19, 22, 29, 0.5);
     font-family: 'Lato';
     font-weight: bold;
     text-align: center;
     width: 70vw;
+    color: whitesmoke
 }
 
 .card {

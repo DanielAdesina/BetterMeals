@@ -39,7 +39,7 @@ dbconn.once('open', function callback () {
     app.use("/weekdays", weekdayRouter);
     app.use("/mealplan", mealPlanRouter);
 
-    app.listen(5000, function() {
+    app.listen(process.env.PORT || 5000, function() {
         
     });
 });
