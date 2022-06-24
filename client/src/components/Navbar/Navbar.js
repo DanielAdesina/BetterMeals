@@ -18,7 +18,7 @@ export default class Navbar extends Component{
           "x-access-token": localStorage.getItem("token")
       }
     }
-    axios.get('http://localhost:5000/user/isUserAuth', config)
+    axios.get('/user/isUserAuth', config)
       .then(res => {
         this.setState({user: res.data.username})
       })

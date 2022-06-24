@@ -34,7 +34,7 @@ class CreateMeal extends Component {
             recipe: this.state.recipe
         };
 
-        axios.post('http://localhost:5000/meals/add', newMeal)
+        axios.post('/meals/add', newMeal)
             .then(res => {});
         
         this.setState({

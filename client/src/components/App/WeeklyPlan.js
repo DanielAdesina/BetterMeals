@@ -23,7 +23,7 @@ class WeeklyPlan extends Component{
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.get('http://localhost:5000/user/isUserAuth', config)
+        axios.get('/user/isUserAuth', config)
             .then(res => {
                 if(res.data.isAuth === false){
                     window.location = "/login"; 
@@ -32,7 +32,7 @@ class WeeklyPlan extends Component{
 
         this.forceUpdate()
         if(this.props.id){
-            axios.get('http://localhost:5000/mealplan/' + this.props.id, config)
+            axios.get('/mealplan/' + this.props.id, config)
                 .then(res => {
                     this.setState({
                         currMealplan: res.data,
@@ -57,7 +57,7 @@ class WeeklyPlan extends Component{
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.post('http://localhost:5000/mealplan/edit/' + this.props.id + '/' + day + '/' + mealtime, {mealId: newMeal, mealTitle: newTitle}, config)
+        axios.post('/mealplan/edit/' + this.props.id + '/' + day + '/' + mealtime, {mealId: newMeal, mealTitle: newTitle}, config)
         .then((res) => {this.forceUpdate();})
         
     }

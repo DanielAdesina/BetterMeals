@@ -50,7 +50,7 @@ class Mealplans extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.post('http://localhost:5000/user/setActive', {planId: id}, config).then(() => {this.refreshPlans()})
+        axios.post('/user/setActive', {planId: id}, config).then(() => {this.refreshPlans()})
     }
 
     changePlansFunc = (id) => (nameParam) => {
@@ -59,7 +59,7 @@ class Mealplans extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.post('http://localhost:5000/mealplan/namechange/' + id, {name: nameParam}, config).then(() => {this.refreshPlans();})
+        axios.post('/mealplan/namechange/' + id, {name: nameParam}, config).then(() => {this.refreshPlans();})
     }
 
     newPlansFunc = () => (nameParam) => {
@@ -79,7 +79,7 @@ class Mealplans extends Component {
             saturday: ["", "", "", "", "", ""],
             date_created: ""
         }
-        axios.post('http://localhost:5000/mealplan/new', newPlan, config).then(() => {this.refreshPlans();})
+        axios.post('/mealplan/new', newPlan, config).then(() => {this.refreshPlans();})
     }
 
     deletePlanFunc = (id) => {
@@ -88,7 +88,7 @@ class Mealplans extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.post('http://localhost:5000/mealplan/delete', {planId: id}, config).then(() => {this.refreshPlans();})
+        axios.post('/mealplan/delete', {planId: id}, config).then(() => {this.refreshPlans();})
     }
     refreshPlans = () => {
         const config = {
@@ -96,12 +96,12 @@ class Mealplans extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.get('http://localhost:5000/user/getActive', config)
+        axios.get('/user/getActive', config)
         .then(activePlanRes => {
             if(activePlanRes.data.isAuth === false){
                 window.location = "/login"; 
             }
-            axios.get('http://localhost:5000/mealplan', config)
+            axios.get('/mealplan', config)
             .then(res => {
                 const mealplans = Array.from(res.data);
                 this.setState({

@@ -12,7 +12,7 @@ export function useAuth(){
         }
     }
     
-    axios.get('http://localhost:5000/user/isUserAuth', config)
+    axios.get('/user/isUserAuth', config)
         .then(res => {
             setAuth(res.data.isAuth);
             setUser(res.data.user.username)

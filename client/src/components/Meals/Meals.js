@@ -22,7 +22,7 @@ class Meals extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.get('http://localhost:5000/user/isUserAuth', config2)
+        axios.get('/user/isUserAuth', config2)
             .then(res => {
                 if(res.data.isAuth === false){
                     window.location = "/login"; 
@@ -38,7 +38,7 @@ class Meals extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.get('http://localhost:5000/user/isUserAuth', config2)
+        axios.get('/user/isUserAuth', config2)
             .then(res => {
                 if(res.data.isAuth === false){
                     window.location = "/login"; 

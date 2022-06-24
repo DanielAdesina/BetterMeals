@@ -67,13 +67,13 @@ class TodaysMeal extends Component{
             "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.get('http://localhost:5000/user/getActive', config)
+        axios.get('/user/getActive', config)
         .then(activePlanRes => {
             if(activePlanRes.data.isAuth === false){
                 window.location = "/login"; 
             }
             if(activePlanRes.data.activePlanId){
-                axios.get('http://localhost:5000/mealplan/' + activePlanRes.data.activePlanId, config)
+                axios.get('/mealplan/' + activePlanRes.data.activePlanId, config)
                 .then(res => {
                     this.setState({activePlan: res.data})
                     let current = new Date();
