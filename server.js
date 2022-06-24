@@ -35,7 +35,6 @@ dbconn.on('error', console.error.bind(console, 'connection error:'));
 dbconn.once('open', function callback () {
 
     app.use("/user", authRoutes.router)
-    app.use("/meals", mealRouter);
     app.use("/weekdays", weekdayRouter);
     app.use("/mealplan", mealPlanRouter);
 
