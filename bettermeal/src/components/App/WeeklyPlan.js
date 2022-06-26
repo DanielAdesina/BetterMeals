@@ -68,7 +68,7 @@ class WeeklyPlan extends Component{
         if(this.props.id){
             content = <><div style={{position: "relative", display: "block", margin: "auto", top: "10vh", width: "60vw", backgroundColor: "#13161d", color: "white"}}>
         <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Sunday:</h2>
                     </div>
                     <div class="col" >
@@ -83,7 +83,7 @@ class WeeklyPlan extends Component{
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Monday:</h2>
                     </div>
                     <div class="col">
@@ -97,7 +97,7 @@ class WeeklyPlan extends Component{
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Tuesday:</h2>
                     </div>
                     <div class="col">
@@ -111,7 +111,7 @@ class WeeklyPlan extends Component{
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Wednesday:</h2>
                     </div>
                     <div class="col">
@@ -125,7 +125,7 @@ class WeeklyPlan extends Component{
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Thursday:</h2>
                     </div>
                     <div class="col">
@@ -139,7 +139,7 @@ class WeeklyPlan extends Component{
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Friday:</h2>
                     </div>
                     <div class="col">
@@ -153,7 +153,7 @@ class WeeklyPlan extends Component{
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Saturday:</h2>
                     </div>
                     <div class="col">

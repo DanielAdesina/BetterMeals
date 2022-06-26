@@ -27,24 +27,29 @@ class MealSnippet extends Component{
             'X-RapidAPI-Key': config["api-key"]
             }
         };
-        if(storageCheck && (Date.now() < storageCheck.ttl)){
-            
-            meal = storageCheck
-            summary = storageCheck.summary
-            this.setState({meal: storageCheck, summary: storageCheck.summary})
-            
+        if(id === ""){
+            this.setState({meal: {}})
         }
         else{
-            axios.request(options).then(res => {
-                res.data.ttl = Date.now() + (86400 * 1000);
-                localStorage.setItem(id, JSON.stringify(res.data));
-                meal = res.data
-                summary = res.data.summary
-                this.setState({meal: res.data, summary: res.data.summary})
-                        
-            }).catch(err => {
-                console.error(err)
-            })
+            if(storageCheck && (Date.now() < storageCheck.ttl)){
+                
+                meal = storageCheck
+                summary = storageCheck.summary
+                this.setState({meal: storageCheck, summary: storageCheck.summary})
+                
+            }
+            else{
+                axios.request(options).then(res => {
+                    res.data.ttl = Date.now() + (86400 * 1000);
+                    localStorage.setItem(id, JSON.stringify(res.data));
+                    meal = res.data
+                    summary = res.data.summary
+                    this.setState({meal: res.data, summary: res.data.summary})
+                            
+                }).catch(err => {
+                    console.error(err)
+                })
+            }
         }
         return [meal, summary]
     }
@@ -59,6 +64,7 @@ class MealSnippet extends Component{
         if (this.props.id !== prevProps.id) {
 
             this.loadContents()
+            console.log(this.state.meal.title)
         }
 
     }
@@ -71,7 +77,7 @@ class MealSnippet extends Component{
 
         let pFontSize = 15
         let mealLink = <Link to={"/meal/" + this.props.id} class="btn"
-        style={{borderRadius: "0px", backgroundColor: "lightblue", width: "100%", color: "black", fontWeight: "bold"}}>View More</Link>
+        style={{borderRadius: "1rem", backgroundColor: "lightblue", width: "100%", color: "black", fontWeight: "bold", margin: "auto", display: "block", marginBottom: "8px"}}>View More</Link>
 
         if(this.props.id === ""){
             pFontSize = 20;
@@ -88,7 +94,7 @@ class MealSnippet extends Component{
         return(
             <>
                 <img alt="Meal" style={{width: "278px", height: "185px"}} src={"https://spoonacular.com/recipeImages/" + meal.id + "-556x370.jpg"} 
-                align="left" class="col-md-8 float mb-3 mt-3 me-5 ms-md-3"></img>
+                align="left" class="col-md-8 float mb-3 mt-3 me-5"></img>
                 <h2 style={{marginTop: "1vh"}}>{meal.title}</h2>
                 <p style={{margin: "2vw", fontSize: pFontSize + "px"}} dangerouslySetInnerHTML={{__html: summary}}></p>
                 {mealLink}

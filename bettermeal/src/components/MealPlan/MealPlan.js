@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../Navbar/Navbar';
+import CustomNavbar from '../Navbar/CustomNavbar';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Mealplan.css"
 import axios from 'axios';
@@ -64,13 +64,13 @@ class MealPlan extends Component {
     render() {
         return (
             <>
-            <Navbar></Navbar>
+            <CustomNavbar></CustomNavbar>
             <div>
-                <h1>{this.props.match.params.id}</h1>
+                <h1 style={{color: "whitesmoke", textAlign: "center", fontFamily: "Lato", backgroundColor: "#13161d"}}>{this.state.currMealplan.name}</h1>
             </div>
             <div class="container-xxxl mx-auto mt-4" id="MealplanContainer">
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Sunday:</h2>
                     </div>
                     <div class="col" >
@@ -85,7 +85,7 @@ class MealPlan extends Component {
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Monday:</h2>
                     </div>
                     <div class="col">
@@ -99,7 +99,7 @@ class MealPlan extends Component {
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Tuesday:</h2>
                     </div>
                     <div class="col">
@@ -113,7 +113,7 @@ class MealPlan extends Component {
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Wednesday:</h2>
                     </div>
                     <div class="col">
@@ -127,7 +127,7 @@ class MealPlan extends Component {
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Thursday:</h2>
                     </div>
                     <div class="col">
@@ -141,7 +141,7 @@ class MealPlan extends Component {
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Friday:</h2>
                     </div>
                     <div class="col">
@@ -155,7 +155,7 @@ class MealPlan extends Component {
                     </div>
                 </div>
                 <div class="row row-cols-2">
-                    <div class="col" style={{width: "16vw"}}>
+                    <div class="col" style={{width: "16vw", minWidth: "200px", minHeight: "70px"}}>
                         <h2 style={{position: "relative", top: "3vh"}}>Saturday:</h2>
                     </div>
                     <div class="col">

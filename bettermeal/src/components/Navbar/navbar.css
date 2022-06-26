@@ -7,7 +7,7 @@
 
 .logout-btn{
     position: relative;
-    top: 0.3vh; 
+    top: 1vh; 
     background: url(./icons8-logout-24.png);
     background-size: cover;
     /* width: 1.77vw;

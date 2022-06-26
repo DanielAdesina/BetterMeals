@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import MealSnippet from "./MealSnippet"
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 
 class TodaysMeal extends Component{
@@ -104,12 +106,21 @@ class TodaysMeal extends Component{
         let snippet = this.state.mealSnippets[this.state.activeSnippet]
         return (
         <>
-            <button class={this.state.buttonStates[0]} onClick={() => this.mealtimeClick(0)} style={{top: '26vh', left: '9vw'}}><span class="rounded-text">Breakfast</span></button>
-            <button class={this.state.buttonStates[1]} onClick={() => this.mealtimeClick(1)} style={{top: '36vh', left: '9vw'}}><span class="rounded-text">Lunch</span></button>
-            <button class={this.state.buttonStates[2]} onClick={() => this.mealtimeClick(2)} style={{top: '46vh', left: '9vw'}}><span class="rounded-text">Dinner</span></button>
-            <div type="container" style={{position: "absolute", left: "25vw", top: "26vh", width: "50vw", backgroundColor: "#13161d", color: "white", fontFamily: "Lexend"}}>
-                {snippet}
+            <div class="row m-0" >
+                <div class="col-2" style={{width: "300px", marginTop: "10vh", marginLeft: "5vw"}}>
+                    <button class={this.state.buttonStates[0]} onClick={() => this.mealtimeClick(0)} style={{position: "relative", top: '0vh'}}><span class="rounded-text">Breakfast</span></button>
+                    <button class={this.state.buttonStates[1]} onClick={() => this.mealtimeClick(1)} style={{position: "relative", top: '0.5vh'}}><span class="rounded-text">Lunch</span></button>
+                    <button class={this.state.buttonStates[2]} onClick={() => this.mealtimeClick(2)} style={{position: "relative", top: '1vh'}}><span class="rounded-text">Dinner</span></button>
+                </div>
+                
+                    
+                
+                
+                <div class="col-10" style={{display: "block", margin: "auto", backgroundColor: "#13161d", color: "white", fontFamily: "Lexend", width: "50vw", marginLeft: "6vw", marginTop: "10vh", borderRadius: "1rem", minWidth: "300px", minHeight: "200px"}}>
+                    {snippet}
+                </div>
             </div>
+            
             
 
             

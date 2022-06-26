@@ -37,7 +37,7 @@ function Login(){
         <div class="loginbg" style={{height: "100vh", overflow: "auto"}}>
 
         
-            <div class="container" style={{width:'20vw', top: '10vh', position: 'relative', display: 'block', margin: 'auto', backgroundColor: "#13161d", borderRadius: '2rem'}}>
+            <div class="container" style={{minWidth: "250px", width:'20vw', top: '10vh', position: 'relative', display: 'block', margin: 'auto', backgroundColor: "#13161d", borderRadius: '2rem'}}>
                 
 
 
