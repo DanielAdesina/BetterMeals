@@ -26,13 +26,13 @@ class MealPlan extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.get('http://localhost:5000/user/isUserAuth', config)
+        axios.get('/user/isUserAuth', config)
             .then(res => {
                 if(res.data.isAuth === false){
                     window.location = "/login"; 
                 }
             })
-        axios.get('http://localhost:5000/mealplan/' + this.props.match.params.id, config)
+        axios.get('/mealplan/' + this.props.match.params.id, config)
             .then(res => {
                 this.setState({
                     currMealplan: res.data,
@@ -56,7 +56,7 @@ class MealPlan extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.post('http://localhost:5000/mealplan/edit/' + this.props.match.params.id + '/' + day + '/' + mealtime, {mealId: newMeal, mealTitle: newTitle}, config)
+        axios.post('/mealplan/edit/' + this.props.match.params.id + '/' + day + '/' + mealtime, {mealId: newMeal, mealTitle: newTitle}, config)
         .then((res) => {this.forceUpdate();})
         
     }

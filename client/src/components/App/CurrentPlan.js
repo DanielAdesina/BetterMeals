@@ -25,7 +25,7 @@ class CurrentPlan extends Component{
             "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.get('http://localhost:5000/user/getActive', config)
+        axios.get('/user/getActive', config)
         .then(activePlanRes => {
             if(activePlanRes.data.isAuth === false){
                 window.location = "/login"; 

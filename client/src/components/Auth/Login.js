@@ -15,7 +15,7 @@ function Login(){
             username: usernameInput,
             password: passwordInput
         }
-        axios.post('http://localhost:5000/user/login', user)
+        axios.post('/user/login', user)
             .then(res => {
                 if(res.data.message === "Success"){
                     localStorage.setItem("token", res.data.token);

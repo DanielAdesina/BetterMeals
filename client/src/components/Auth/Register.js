@@ -15,7 +15,7 @@ function Register(){
             username: usernameInput,
             password: passwordInput
         }
-        axios.post('http://localhost:5000/user/register', user)
+        axios.post('/user/register', user)
             .then(res => {
                 if(res.data.message === "user added successfully"){
                     localStorage.setItem("token", res.data.token);
