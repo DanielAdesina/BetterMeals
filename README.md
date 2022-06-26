@@ -1,5 +1,5 @@
 # BetterMeals-Fullstack
-
+Take a look at https://bettermealsproject.herokuapp.com
 A fullstack meal planner application using the MERN stack.
 Some features include,
 - User authentication using JWT tokens with a Time To Live and bcrypt encryption
