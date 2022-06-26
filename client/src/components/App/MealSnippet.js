@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import config from "../../config.json";
 import { Link } from "react-router-dom";
 
 class MealSnippet extends Component{
@@ -24,7 +23,7 @@ class MealSnippet extends Component{
             url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/' + id + '/information',
             headers: {
             'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-            'X-RapidAPI-Key': config["api-key"]
+            'X-RapidAPI-Key': process.env.APIKEY
             }
         };
         if(id === ""){
