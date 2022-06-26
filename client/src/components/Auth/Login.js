@@ -15,7 +15,7 @@ function Login(){
             username: usernameInput,
             password: passwordInput
         }
-        axios.post('/user/login', user)
+        axios.post('http://localhost:5000/user/login', user)
             .then(res => {
                 if(res.data.message === "Success"){
                     localStorage.setItem("token", res.data.token);
@@ -37,7 +37,7 @@ function Login(){
         <div class="loginbg" style={{height: "100vh", overflow: "auto"}}>
 
         
-            <div class="container" style={{width:'20vw', top: '10vh', position: 'relative', display: 'block', margin: 'auto', backgroundColor: "#13161d", borderRadius: '2rem'}}>
+            <div class="container" style={{minWidth: "250px", width:'20vw', top: '10vh', position: 'relative', display: 'block', margin: 'auto', backgroundColor: "#13161d", borderRadius: '2rem'}}>
                 
 
 
@@ -50,7 +50,7 @@ function Login(){
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input name="username" type="email" id="loginName" placeholder="Username" class="form-control" onChange={event => setUsernameInput(event.target.value)} />
+                                <input style={{color: "white"}} name="username" type="email" id="loginName" placeholder="Username" class="form-control" onChange={event => setUsernameInput(event.target.value)} />
                             </div>
 
                             <div class="form-outline mb-4">

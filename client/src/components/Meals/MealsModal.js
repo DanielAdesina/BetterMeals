@@ -22,7 +22,7 @@ class MealsModal extends Component{
         const options = {
             method: 'GET',
             url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
-            params: {query: this.state.searchField, number: '10', offset: '0'},
+            params: {query: this.state.searchField, number: '12', offset: '0'},
             headers: {
               'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
               'X-RapidAPI-Key': config['api-key']
@@ -61,25 +61,25 @@ class MealsModal extends Component{
 
     render(){
         return(
-           <Modal show={this.props.show} size="lg" scrollable={true}>
+           <Modal className="myModal" show={this.props.show} size="lg" scrollable={true}>
                 <Modal.Header>Meal Search</Modal.Header>
                 <Modal.Body>
-                    <form id="mealsearch-form" style={{left: '0vw', width: '100%'}}>
+                    <form style={{left: '0vw', width: '100%'}}>
                         
                         <div class="form-outline mb-4 input-group inner-addon right-addon">
                             
-                            <input type="text"  id="mealsearch" style={{left: '0vw', width: '100%'}} placeholder='Search for any meal!' 
+                            <input type="text"  id="mealsearch" style={{left: '0vw', width: "95%"}} placeholder='Search for any meal!' 
                             value={this.state.searchField} onChange={event => {this.setState({searchField: event.target.value})}}/>
-                            
+                            <span class="input-group-btn">
+                                <button class="search-icon" type="submit" onClick={event => this.handleClick(event)}></button>
+                            </span>
                             
                             {/* <span class="input-group-btn">
                                 <button class="btn btn-primary" type="button"></button>
                             </span> */}
                             
                         </div>
-                        <span class="input-group-btn">
-                            <button class="search-icon" type="submit" onClick={event => this.handleClick(event)}></button>
-                        </span>
+                       
                     </form>
                     {this.state.mealsResult}
                 </Modal.Body>

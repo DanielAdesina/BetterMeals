@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import MealSnippet from "./MealSnippet"
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 
 class TodaysMeal extends Component{
@@ -67,13 +69,13 @@ class TodaysMeal extends Component{
             "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.get('/user/getActive', config)
+        axios.get('http://localhost:5000/user/getActive', config)
         .then(activePlanRes => {
             if(activePlanRes.data.isAuth === false){
                 window.location = "/login"; 
             }
             if(activePlanRes.data.activePlanId){
-                axios.get('/mealplan/' + activePlanRes.data.activePlanId, config)
+                axios.get('http://localhost:5000/mealplan/' + activePlanRes.data.activePlanId, config)
                 .then(res => {
                     this.setState({activePlan: res.data})
                     let current = new Date();
@@ -90,7 +92,7 @@ class TodaysMeal extends Component{
             }
             else{
                 this.setState({activePlan: null})
-                this.setState({mealSnippets: [<h1 style={{padding: "20px"}}>Head to Meal Plans and click a Mealplan Checkbox to select an Active Meal Plan!</h1>]})
+                this.setState({mealSnippets: [<h1 style={{padding: "20px"}}>Head to Meal Plans and click a Mealplans Checkbox to select an Active Meal Plan!</h1>]})
             }
             
         })
@@ -104,12 +106,21 @@ class TodaysMeal extends Component{
         let snippet = this.state.mealSnippets[this.state.activeSnippet]
         return (
         <>
-            <button class={this.state.buttonStates[0]} onClick={() => this.mealtimeClick(0)} style={{top: '26vh', left: '9vw'}}><span class="rounded-text">Breakfast</span></button>
-            <button class={this.state.buttonStates[1]} onClick={() => this.mealtimeClick(1)} style={{top: '36vh', left: '9vw'}}><span class="rounded-text">Lunch</span></button>
-            <button class={this.state.buttonStates[2]} onClick={() => this.mealtimeClick(2)} style={{top: '46vh', left: '9vw'}}><span class="rounded-text">Dinner</span></button>
-            <div type="container" style={{position: "absolute", left: "25vw", top: "26vh", width: "50vw", backgroundColor: "#13161d", color: "white", fontFamily: "Lexend"}}>
-                {snippet}
+            <div class="row m-0" >
+                <div class="col-2" style={{width: "300px", marginTop: "10vh", marginLeft: "5vw"}}>
+                    <button class={this.state.buttonStates[0]} onClick={() => this.mealtimeClick(0)} style={{position: "relative", top: '0vh'}}><span class="rounded-text">Breakfast</span></button>
+                    <button class={this.state.buttonStates[1]} onClick={() => this.mealtimeClick(1)} style={{position: "relative", top: '0.5vh'}}><span class="rounded-text">Lunch</span></button>
+                    <button class={this.state.buttonStates[2]} onClick={() => this.mealtimeClick(2)} style={{position: "relative", top: '1vh'}}><span class="rounded-text">Dinner</span></button>
+                </div>
+                
+                    
+                
+                
+                <div class="col-10" style={{display: "block", margin: "auto", backgroundColor: "#13161d", color: "white", fontFamily: "Lexend", width: "50vw", marginLeft: "6vw", marginTop: "10vh", borderRadius: "1rem", minWidth: "300px", minHeight: "200px"}}>
+                    {snippet}
+                </div>
             </div>
+            
             
 
             

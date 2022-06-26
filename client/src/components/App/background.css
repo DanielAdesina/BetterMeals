@@ -37,6 +37,10 @@ src: url(../LexendDeca-Light.ttf);
     box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
 }
 
+.navbar{
+    backgroundColor: "#13161d"
+}
+
 .navbar-brand{
     margin-left: 5%
 }
@@ -54,7 +58,7 @@ src: url(../LexendDeca-Light.ttf);
     margin-left: 1%;
     color: rgb(255, 255, 255)
   } 
-.navbar-right{
+.nav{
     position: absolute;
     font-family: 'Lato';
     font-size: large;
@@ -90,8 +94,7 @@ src: url(../LexendDeca-Light.ttf);
  .btn-secondary{
     position: relative;
     color: rgb(255, 255, 255);
-    left: 29vw;
-    top: 5vh;
+    font-size: x-large;
     /* padding-left: 10%;
     padding-right: 10%; */
     width: 20vw;
@@ -120,12 +123,12 @@ src: url(../LexendDeca-Light.ttf);
 
 
 .rounded{
-    margin: 20px auto;
+    margin: 10px auto;
     font-family: 'Lato';
     border: none;
-    border-radius:50px;
+    border-radius: 1rem;
     padding: 10px 44px;
-    font-size: 36px;
+    font-size: 2.5em;
     position: absolute;
     background-color: rgba(255, 255, 255, 0.3);
     background: transparent;
@@ -134,12 +137,12 @@ src: url(../LexendDeca-Light.ttf);
 }
 
 .rounded-focus{
-    margin: 20px auto;
+    margin: 10px auto;
     font-family: 'Lato';
     border: none;
-    border-radius:50px;
+    border-radius: 3rem;
     padding: 10px 44px;
-    font-size: 36px;
+    font-size: 2.5em;
     position: absolute;
 
     background: #13161d;
@@ -149,7 +152,7 @@ src: url(../LexendDeca-Light.ttf);
   
    
 .rounded::before{
-      border-radius:50px;
+      border-radius: 3rem;
       transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       content: '';
       width: 50%;
@@ -160,13 +163,13 @@ src: url(../LexendDeca-Light.ttf);
       left: 0;
 }
 .rounded-text{
-        font-weight: bolder;
-        color:#7acaff;
-        mix-blend-mode: difference;
+        font-weight: 900;
+        color:#ffffff;
+        mix-blend-mode: lighten;
 }
       
 .rounded::before{
-        border-radius: 50px;
+        border-radius: 3rem;
         width: 25%;
         background: #13161d;
       }

@@ -22,7 +22,7 @@ class Meals extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.get('/user/isUserAuth', config2)
+        axios.get('http://localhost:5000/user/isUserAuth', config2)
             .then(res => {
                 if(res.data.isAuth === false){
                     window.location = "/login"; 
@@ -38,7 +38,7 @@ class Meals extends Component {
                 "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.get('/user/isUserAuth', config2)
+        axios.get('http://localhost:5000/user/isUserAuth', config2)
             .then(res => {
                 if(res.data.isAuth === false){
                     window.location = "/login"; 
@@ -47,7 +47,7 @@ class Meals extends Component {
         const options = {
             method: 'GET',
             url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
-            params: {query: this.state.searchField, number: '10', offset: '0'},
+            params: {query: this.state.searchField, number: '12', offset: '0'},
             headers: {
               'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
               'X-RapidAPI-Key': config['api-key']
@@ -57,9 +57,9 @@ class Meals extends Component {
         if(storageCheck && (Date.now() < storageCheck.ttl)){
             const mealArray = Array.from(storageCheck.results);
             this.setState({
-                mealsResult: <div class="row row-cols-5">
+                mealsResult: <div class="row">
                     {mealArray.map((meal) =>
-                    <div class="col" style={{marginBottom: "2rem", height: "250px"}}><Meal id={meal.id} title={meal.title} mealClick={() => {}}></Meal></div>)}
+                    <div class="col" style={{marginBottom: "2rem"}}><Meal id={meal.id} title={meal.title} mealClick={() => {}}></Meal></div>)}
                 </div>
             })
         }
@@ -84,20 +84,21 @@ class Meals extends Component {
         const {searchField, mealsResult} = this.state
         return (
             <div class="container" id="meals-container">
-                <form id="mealsearch-form">
+                <form>
                 
                     <div class="form-outline mb-4 input-group inner-addon right-addon">
                         
-                        <input type="text"  id="mealsearch" placeholder='Search for any meal!' value={this.state.searchField} 
+                        <input class="form-control" type="text" style={{color: "black", fontWeight: "bold"}} id="mealsearch" placeholder='Search for any meal!' value={this.state.searchField} 
                         onChange={event => {this.setState({searchField: event.target.value})}}/>
+                        <span class="input-group-btn">
+                            <button class="search-icon" type="submit" onClick={event => {this.setState({mealsResult: <></>}); this.handleClick(event)}}></button>
+                        </span>
                         
                         
                         
                         
                     </div>
-                    <span class="input-group-btn">
-                        <button class="search-icon" type="submit" onClick={event => {this.setState({mealsResult: <></>}); this.handleClick(event)}}></button>
-                    </span>
+                    
                 </form>
                
                 

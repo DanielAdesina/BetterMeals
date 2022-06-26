@@ -25,7 +25,7 @@ class CurrentPlan extends Component{
             "x-access-token": localStorage.getItem("token")
             }
         }
-        axios.get('/user/getActive', config)
+        axios.get('http://localhost:5000/user/getActive', config)
         .then(activePlanRes => {
             if(activePlanRes.data.isAuth === false){
                 window.location = "/login"; 
@@ -38,13 +38,16 @@ class CurrentPlan extends Component{
 
     render(){
         return (
-        <>
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-secondary btn-lg" onClick={() => this.switchContent(0)}>Today's Meals</button>
-                <button type="button" class="btn btn-secondary btn-lg" onClick={() => this.switchContent(1)}>Weekly Plan</button>
+        <div class="container-xxxl">
+            <div class="row m-0">
+                <div class="btn-group" role="group" style={{minWidth: "400px"}}>
+                    <button type="button" class="btn btn-secondary btn-lg" onClick={() => this.switchContent(0)}>Today's Meals</button>
+                    <button type="button" class="btn btn-secondary btn-lg" onClick={() => this.switchContent(1)}>Weekly Plan</button>
+                </div>
             </div>
+            
             {this.state.content[this.state.currContent]}
-        </>
+        </div>
         )
     }
 }

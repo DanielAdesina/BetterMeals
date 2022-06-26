@@ -3,7 +3,7 @@ import config from "../../config.json";
 import axios from 'axios';
 import { Accordion } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "../Navbar/Navbar.js"
+import CustomNavbar from "../Navbar/CustomNavbar.js"
 
 
 class MealInfo extends Component{
@@ -73,7 +73,7 @@ class MealInfo extends Component{
         let meal = this.state.meal
         return(
             <>
-            <Navbar></Navbar>
+            <CustomNavbar></CustomNavbar>
             <div class="clearfix" style={{backgroundColor: 'rgba(255, 255, 255, 0.7)', fontFamily: "Lexend"}}>
                 <img alt="meal" style={{width: "556px", height: "370px"}} src={"https://spoonacular.com/recipeImages/" + id + "-556x370.jpg"} align="left" class="col-md-8 float mb-3 mt-2 me-5 ms-md-3"></img>
                 <h1 style={{fontFamily: "Lexend"}}>{meal.title}</h1>

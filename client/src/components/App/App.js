@@ -7,7 +7,7 @@ import Meals from "../Meals/Meals";
 import Login from "../Auth/Login"
 import Register from "../Auth/Register"
 import './background.css'
-import Navbar from "../Navbar/Navbar";
+import CustomNavbar from "../Navbar/CustomNavbar";
 import CurrentPlan from "./CurrentPlan"
 import MealInfo from "../Meals/MealInfo"
 
@@ -33,9 +33,10 @@ class App extends Component{
           
           
 
-            <Route exact path="/" render={() => <><Navbar></Navbar><CurrentPlan></CurrentPlan></>} />
-            <Route exact path="/meals" render={() => <><Navbar></Navbar><Meals></Meals></>} />
-            <Route exact path="/mealplans" render={() => <><Navbar></Navbar><div class="container" id="todaysplancontainer"><Mealplans></Mealplans></div></>} />
+            <Route exact path="/" render={() => <><CustomNavbar></CustomNavbar><CurrentPlan></CurrentPlan></>} />
+            <Route exact path="/currentplan" render={() => <><CustomNavbar></CustomNavbar><CurrentPlan></CurrentPlan></>} />
+            <Route exact path="/meals" render={() => <><CustomNavbar></CustomNavbar><Meals></Meals></>} />
+            <Route exact path="/mealplans" render={() => <><CustomNavbar></CustomNavbar><div class="container" id="todaysplancontainer"><Mealplans></Mealplans></div></>} />
             <Route exact path="/mealplan/:id" component={MealPlan} />
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/register" component={Register}></Route>

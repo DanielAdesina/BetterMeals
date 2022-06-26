@@ -32,31 +32,35 @@
   
   /* This bit draws the box around it */
     border:0.1vmax solid grey;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 1);
 
   /* I've used padding so you can see the edges of the elements. */
     padding:0.3vmin;
     height: 5vh;
 }
 
-.input-group-btn{
+/* .input-group-btn{
     /* width: 50px;
-    height: 50px; */
+    height: 50px; 
     min-width: 20px;
     min-height: 20px;
-}
+} */
 
 .search-icon{
     position: relative;
     /* flex-grow: 2; */
-    right: 2vw;
-    top: 0.2vh;
-    background: url(./icons8-search-50.png);
-    background-size: cover;
+    border-radius: 0rem 1rem 1rem 0rem;
+
+    
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: 98% center;
+    background-color: rgba(255, 255, 255, 0.5);
     /* width: 1.77vw;
     height: 1vh; */
-    width: 2rem;
-    height: 2rem;
+    width: 30px;
+    height: 100%;
    
    
     /* margin-top: 0.5vmin;
@@ -68,19 +72,35 @@
     border: none;
 }
 
+
+
 #mealsearch{
     position: relative;
-    /* border: 10px; */
-    border-width: 0px;
-    /* border-color: rgb(255, 0, 0); */
-    border-radius: 1.625rem;
-    outline: none;
-    width: 40vw;
-    height: 4vh;
+    width: 20vw;
+    padding: 12px 24px;
+    border-radius: 1rem 0rem 0rem 1rem;
+
+    /* background-color: transparent; */
+    transition: transform 250ms ease-in-out;
+    font-size: 14px;
+    line-height: 18px;
+    border: none;
+    
+    color: black;
+    background-color: rgba(255, 255, 255, 0.5);
+    
 }
+
+#mealsearch::placeholder{
+    color: black;
+    font-weight: 700;
+}
+
+
 
 #mealsearch:focus{
     outline:none !important;
+    color: black;
     outline-width: 0 !important;
     box-shadow: none;
     -moz-box-shadow: none;
@@ -125,6 +145,10 @@ input:active{
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
+}
+
+.myModal .modal-content{
+    background-color: "#13161d"
 }
 /* .wrapper{
     display: grid;

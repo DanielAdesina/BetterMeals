@@ -15,7 +15,7 @@ function Register(){
             username: usernameInput,
             password: passwordInput
         }
-        axios.post('/user/register', user)
+        axios.post('http://localhost:5000/user/register', user)
             .then(res => {
                 if(res.data.message === "user added successfully"){
                     localStorage.setItem("token", res.data.token);
@@ -37,7 +37,7 @@ function Register(){
         <div class="loginbg" style={{height: "100vh", overflow: "auto"}}>
 
         
-            <div class="container" style={{width:'20vw', top: '10vh', position: 'relative', display: 'block', margin: 'auto', backgroundColor: "#13161d", borderRadius: '2rem'}}>
+            <div class="container" style={{minWidth: "250px", width:'20vw', top: '10vh', position: 'relative', display: 'block', margin: 'auto', backgroundColor: "#13161d", borderRadius: '2rem'}}>
                 
 
 
