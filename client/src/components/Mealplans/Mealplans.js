@@ -107,7 +107,7 @@ class Mealplans extends Component {
                 this.setState({
                     mealplanNames: mealplans.map((plan) => 
                         
-                        <Link to={"/mealplan/" + plan._id} class="list-group-item list-group-item-action d-flex justify-content-between border-end-0 border-start-0"
+                        <Link to={"/mealplans/" + plan._id} class="list-group-item list-group-item-action d-flex justify-content-between border-end-0 border-start-0"
                         style={{backgroundColor: "#13161d", color: "whitesmoke"}} onClick={this.linkHandler}>
                             {plan.name}
                             <span>

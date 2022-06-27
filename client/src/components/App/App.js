@@ -37,7 +37,7 @@ class App extends Component{
             <Route exact path="/currentplan" render={() => <><CustomNavbar></CustomNavbar><CurrentPlan></CurrentPlan></>} />
             <Route exact path="/meals" render={() => <><CustomNavbar></CustomNavbar><Meals></Meals></>} />
             <Route exact path="/mealplans" render={() => <><CustomNavbar></CustomNavbar><div class="container" id="todaysplancontainer"><Mealplans></Mealplans></div></>} />
-            <Route exact path="/mealplan/:id" component={MealPlan} />
+            <Route exact path="/mealplans/:id" component={MealPlan} />
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/register" component={Register}></Route>
             <Route exact path="/meal/:id" component={MealInfo}></Route>
