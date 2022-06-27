@@ -40,7 +40,7 @@ class CurrentPlan extends Component{
         return (
         <div class="container-xxxl">
             <div class="row m-0">
-                <div class="btn-group" role="group" style={{minWidth: "380px", width:"100%", left: "0vw"}}>
+                <div class="btn-group" role="group" style={{width:"100%", left: "0vw"}}>
                     <button type="button" class="btn btn-secondary btn-lg" onClick={() => this.switchContent(0)}>Today's Meals</button>
                     <button type="button" class="btn btn-secondary btn-lg" onClick={() => this.switchContent(1)}>Weekly Plan</button>
                 </div>
