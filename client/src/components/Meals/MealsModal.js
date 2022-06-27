@@ -34,7 +34,7 @@ class MealsModal extends Component{
             this.setState({
                 mealsResult: <div class="row row-cols-3">
                     {mealArray.map((meal) =>
-                    <div class="col" style={{marginBottom: "2rem", height: "250px"}} onClick={() => {this.props.changeMealFunc(meal.id, meal.title); this.props.closeFunc()}}>
+                    <div class="col-md-auto" style={{marginBottom: "2rem", height: "250px"}} onClick={() => {this.props.changeMealFunc(meal.id, meal.title); this.props.closeFunc()}}>
                         <Meal id={meal.id} title={meal.title}></Meal>
                     </div>)}
                 </div>

@@ -19,6 +19,17 @@ class MealInfo extends Component{
     componentDidMount(){
         const id = this.props.match.params.id
         const storageCheck = JSON.parse(localStorage.getItem(id));
+        const config2 = {
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            }
+        }
+        axios.get('/user/isUserAuth', config2)
+            .then(res => {
+                if(res.data.isAuth === false){
+                    window.location = "/login"; 
+                }
+            })
         const options = {
             method: 'GET',
             url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/' + id + '/information',
@@ -75,7 +86,7 @@ class MealInfo extends Component{
             <>
             <CustomNavbar></CustomNavbar>
             <div class="clearfix" style={{backgroundColor: 'rgba(255, 255, 255, 0.7)', fontFamily: "Lexend"}}>
-                <img alt="meal" style={{width: "556px", height: "370px"}} src={"https://spoonacular.com/recipeImages/" + id + "-556x370.jpg"} align="left" class="col-md-8 float mb-3 mt-2 me-5 ms-md-3"></img>
+                <img alt="meal" style={{width: "390px", height: "260px"}} src={"https://spoonacular.com/recipeImages/" + id + "-556x370.jpg"} align="left" class="col-md-8 float mb-3 mt-2 me-5 ms-md-3"></img>
                 <h1 style={{fontFamily: "Lexend"}}>{meal.title}</h1>
                 <p style={{fontSize: "20px"}} dangerouslySetInnerHTML={{__html: meal.summary}}></p>
                 

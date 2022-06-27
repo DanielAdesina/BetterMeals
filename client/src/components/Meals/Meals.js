@@ -58,7 +58,7 @@ class Meals extends Component {
             this.setState({
                 mealsResult: <div class="row">
                     {mealArray.map((meal) =>
-                    <div class="col" style={{marginBottom: "2rem"}}><Meal id={meal.id} title={meal.title} mealClick={() => {}}></Meal></div>)}
+                    <div class="col-md-auto" style={{marginBottom: "2rem"}}><Meal id={meal.id} title={meal.title} mealClick={() => {}}></Meal></div>)}
                 </div>
             })
         }
