@@ -32,7 +32,7 @@ class MealsModal extends Component{
         if(storageCheck && (Date.now() < storageCheck.ttl)){
             const mealArray = Array.from(storageCheck.results);
             this.setState({
-                mealsResult: <div class="row row-cols-3">
+                mealsResult: <div class="row">
                     {mealArray.map((meal) =>
                     <div class="col-md-auto" style={{marginBottom: "2rem", height: "250px"}} onClick={() => {this.props.changeMealFunc(meal.id, meal.title); this.props.closeFunc()}}>
                         <Meal id={meal.id} title={meal.title}></Meal>
