@@ -20,7 +20,7 @@ app.use(express.json());
 
 
 mongoose.connect(
-    "mongodb+srv://mern:mongodb@cluster0.4c2i1.mongodb.net/mealplan?retryWrites=true&w=majority", 
+    process.env.CONNSTR, 
     {
         useNewUrlParser: true,
         useFindAndModify: false,
