@@ -49,7 +49,7 @@ class Meals extends Component {
             params: {query: this.state.searchField, number: '12', offset: '0'},
             headers: {
               'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-              'X-RapidAPI-Key': process.env.APIKEY
+              'X-RapidAPI-Key': "65462020bdmshd9c109286e7e117p19564bjsnd61340821ffa"
             }
         };
         const storageCheck = JSON.parse(localStorage.getItem(this.state.searchField));

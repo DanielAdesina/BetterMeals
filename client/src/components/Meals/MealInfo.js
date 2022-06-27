@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import config from "../../config.json";
 import axios from 'axios';
 import { Accordion } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,7 +24,7 @@ class MealInfo extends Component{
             url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/' + id + '/information',
             headers: {
             'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-            'X-RapidAPI-Key': process.env.APIKEY
+            'X-RapidAPI-Key': config["api-key"]
             }
         };
         if(storageCheck && (Date.now() < storageCheck.ttl)){

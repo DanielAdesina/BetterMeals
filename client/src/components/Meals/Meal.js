@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import emptysign from "../MealPlan/emptyplate.webp"
 import MealsModal from "./MealsModal";
+import config from "../../config.json";
 import { Link } from "react-router-dom";
 
 class Meal extends Component{
@@ -24,7 +25,7 @@ class Meal extends Component{
                 url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/' + this.props.id + '/information',
                 headers: {
                 'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-                'X-RapidAPI-Key': process.env.APIKEY
+                'X-RapidAPI-Key': config["api-key"]
                 }
             };
             if(storageCheck && (Date.now() < storageCheck.ttl)){

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Meal from './Meal';
 import { Modal } from 'react-bootstrap';
-
+import config from "../../config.json";
 
 
 
@@ -25,7 +25,7 @@ class MealsModal extends Component{
             params: {query: this.state.searchField, number: '12', offset: '0'},
             headers: {
               'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-              'X-RapidAPI-Key': process.env.APIKEY
+              'X-RapidAPI-Key': config['api-key']
             }
         };
         const storageCheck = JSON.parse(localStorage.getItem(this.state.searchField));
